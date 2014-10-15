@@ -42,6 +42,19 @@ namespace WorkTimer
                 selection = (int)Math.Floor(issue_id.Value);
                 Close();
             }
+            else if (e.KeyCode == Keys.Escape)
+            {
+                selection = 0;
+                Close();
+            }
+        }
+
+        private void SearchIssue_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape) {
+                selection = 0;
+                Close();
+            }
         }
     }
 }

@@ -78,6 +78,7 @@
             this.host.Name = "host";
             this.host.Size = new System.Drawing.Size(121, 20);
             this.host.TabIndex = 1;
+            this.host.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Settings_KeyDown);
             // 
             // protocol
             // 
@@ -91,6 +92,7 @@
             this.protocol.Name = "protocol";
             this.protocol.Size = new System.Drawing.Size(121, 21);
             this.protocol.TabIndex = 0;
+            this.protocol.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Settings_KeyDown);
             // 
             // label1
             // 
@@ -126,6 +128,7 @@
             this.password.PasswordChar = '•';
             this.password.Size = new System.Drawing.Size(121, 20);
             this.password.TabIndex = 2;
+            this.password.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Settings_KeyDown);
             // 
             // username
             // 
@@ -134,6 +137,7 @@
             this.username.Name = "username";
             this.username.Size = new System.Drawing.Size(121, 20);
             this.username.TabIndex = 1;
+            this.username.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Settings_KeyDown);
             // 
             // method
             // 
@@ -148,6 +152,7 @@
             this.method.Size = new System.Drawing.Size(121, 21);
             this.method.TabIndex = 0;
             this.method.SelectedIndexChanged += new System.EventHandler(this.method_SelectedIndexChanged);
+            this.method.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Settings_KeyDown);
             // 
             // lblPassword
             // 
@@ -190,6 +195,7 @@
             this.btnSave.Text = "Save And Close";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnSave.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Settings_KeyDown);
             // 
             // btnTestConnection
             // 
@@ -202,6 +208,7 @@
             this.btnTestConnection.Text = "Test Connection";
             this.btnTestConnection.UseVisualStyleBackColor = true;
             this.btnTestConnection.Click += new System.EventHandler(this.btnTestConnection_Click);
+            this.btnTestConnection.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Settings_KeyDown);
             // 
             // btnDiscard
             // 
@@ -214,6 +221,7 @@
             this.btnDiscard.Text = "Discard And Close";
             this.btnDiscard.UseVisualStyleBackColor = true;
             this.btnDiscard.Click += new System.EventHandler(this.btnDiscard_Click);
+            this.btnDiscard.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Settings_KeyDown);
             // 
             // Settings
             // 
@@ -232,6 +240,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Settings";
             this.Load += new System.EventHandler(this.Settings_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Settings_KeyDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);

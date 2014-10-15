@@ -41,6 +41,7 @@
             this.mIssues = new System.Windows.Forms.ToolStripMenuItem();
             this.mIssuesById = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.restart = new System.Windows.Forms.PictureBox();
             this.stop = new System.Windows.Forms.PictureBox();
             this.pause = new System.Windows.Forms.PictureBox();
             this.start = new System.Windows.Forms.PictureBox();
@@ -54,14 +55,13 @@
             this.lblProject = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.restart = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.restart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pause)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.start)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.restart)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -169,6 +169,18 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Timer";
+            // 
+            // restart
+            // 
+            this.restart.Enabled = false;
+            this.restart.Image = ((System.Drawing.Image)(resources.GetObject("restart.Image")));
+            this.restart.Location = new System.Drawing.Point(106, 49);
+            this.restart.Name = "restart";
+            this.restart.Size = new System.Drawing.Size(26, 25);
+            this.restart.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.restart.TabIndex = 2;
+            this.restart.TabStop = false;
+            this.restart.Click += new System.EventHandler(this.restart_Click);
             // 
             // stop
             // 
@@ -305,18 +317,6 @@
             // 
             this.timer.Interval = 1000;
             // 
-            // restart
-            // 
-            this.restart.Enabled = false;
-            this.restart.Image = ((System.Drawing.Image)(resources.GetObject("restart.Image")));
-            this.restart.Location = new System.Drawing.Point(106, 49);
-            this.restart.Name = "restart";
-            this.restart.Size = new System.Drawing.Size(26, 25);
-            this.restart.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.restart.TabIndex = 2;
-            this.restart.TabStop = false;
-            this.restart.Click += new System.EventHandler(this.restart_Click);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -335,12 +335,12 @@
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.restart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pause)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.start)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.restart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

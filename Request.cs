@@ -33,6 +33,8 @@ namespace WorkTimer
 
             WebRequest r = s.request = WebRequest.Create(s.url = Config.LOCATION + path + (String.IsNullOrEmpty(param) ? "" : "?" + param));
 
+            Console.Write(s.url);
+
             r.Method = "GET";
             r.ContentType = "application/json";
             r.Credentials = new NetworkCredential(Config.USERNAME, Config.PASSWORD);

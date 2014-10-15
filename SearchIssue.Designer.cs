@@ -79,6 +79,7 @@
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            this.btnOK.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SearchIssue_KeyDown);
             // 
             // btnCancel
             // 
@@ -91,6 +92,7 @@
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancel.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SearchIssue_KeyDown);
             // 
             // SearchIssue
             // 
@@ -108,6 +110,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Search Issue";
             this.Load += new System.EventHandler(this.SearchIssue_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SearchIssue_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.issue_id)).EndInit();
             this.ResumeLayout(false);
 

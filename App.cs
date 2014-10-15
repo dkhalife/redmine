@@ -26,10 +26,20 @@ namespace WorkTimer
             timer.Tick += timer_Tick;
         }
 
-        private long seconds = 0;
+        private int seconds = 0;
+        private int minutes = 0;
+        private long hours = 0;
         void timer_Tick(object sender, EventArgs e)
         {
-            ++seconds;
+            if (++seconds == 60)
+            {
+                seconds = 0;
+                if (++minutes == 60)
+                {
+                    ++hours;
+                }
+            }
+            
             UpdateTime();
         }
 
@@ -56,19 +66,19 @@ namespace WorkTimer
             pause.Enabled = false;
             restart.Enabled = false;
 
-            seconds = 0;
+            hours = seconds = minutes = 0;
             UpdateTime();
         }
 
         private void restart_Click(object sender, EventArgs e)
         {
-            seconds = 0;
+            hours = seconds = minutes = 0;
             UpdateTime();
         }
 
         private void UpdateTime()
         {
-            lblElapsedTime.Text = seconds.ToString();
+            lblElapsedTime.Text = hours.ToString().PadLeft(2, '0') + ':' + minutes.ToString().PadLeft(2, '0') + ':' + seconds.ToString().PadLeft(2, '0');
         }
 
         private void mClose_Click(object sender, EventArgs e)
@@ -130,8 +140,8 @@ namespace WorkTimer
                 }
 
                 JObject R = JObject.Parse(response);
-                JObject I = JObject.Parse(R["issue"].ToString());
-                JObject P = JObject.Parse(I["project"].ToString());
+                JObject I = R["issue"] as JObject;
+                JObject P = I["project"] as JObject;
                 lblIssueNumber.Text = SearchIssue.selection.ToString();
                 lblIssueTitle.Text = I["subject"].ToString();
                 lblProject.Text = P["name"].ToString();
@@ -144,7 +154,18 @@ namespace WorkTimer
 
         void lblIssueNumber_Click(object sender, EventArgs e)
         {
-            // TODO: Show issues for project
+            new BrowseIssues().ShowDialog();
+
+            if (BrowseIssues.selection != null)
+            {
+                lblIssueNumber.Text = BrowseIssues.selection.id.ToString();
+                lblIssueTitle.Text = BrowseIssues.selection.title;
+                lblProject.Text = BrowseIssues.selection.project;
+
+                lblIssueNumber.ForeColor = Color.Black;
+                lblIssueNumber.Font = new Font(lblIssueNumber.Font.Name, lblIssueNumber.Font.Size, FontStyle.Regular);
+                lblIssueNumber.Click -= lblIssueNumber_Click;
+            }
         }
     }
 }

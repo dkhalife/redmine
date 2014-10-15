@@ -61,6 +61,7 @@
       <DependentUpon>App.cs</DependentUpon>
     </Compile>
     <Compile Include="Config.cs" />
+    <Compile Include="Issue.cs" />
     <Compile Include="Project.cs" />
     <Compile Include="Request.cs" />
     <Compile Include="Help.cs">
@@ -76,6 +77,12 @@
     </Compile>
     <Compile Include="SearchIssue.Designer.cs">
       <DependentUpon>SearchIssue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BrowseIssues.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BrowseIssues.Designer.cs">
+      <DependentUpon>BrowseIssues.cs</DependentUpon>
     </Compile>
     <Compile Include="SearchProject.cs">
       <SubType>Form</SubType>
@@ -110,6 +117,9 @@
     </Compile>
     <EmbeddedResource Include="SearchIssue.resx">
       <DependentUpon>SearchIssue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BrowseIssues.resx">
+      <DependentUpon>BrowseIssues.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SearchProject.resx">
       <DependentUpon>SearchProject.cs</DependentUpon>

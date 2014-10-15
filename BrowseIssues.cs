@@ -13,19 +13,18 @@ using System.Windows.Forms;
 
 namespace WorkTimer
 {
-    public partial class SearchProject : Form
+    public partial class BrowseIssues : Form
     {
-        public static Project selection = null;
+        public static Issue selection = null;
+        private List<Issue> issues = new List<Issue>();
 
-        private List<Project> projects = new List<Project>();
-
-        public SearchProject()
+        public BrowseIssues()
         {
             InitializeComponent();
 
             query.Enabled = false;
             query.Text = "Loading...";
-            Request.Get("projects.json", "limit=1000000", new Request.ResponseCallback(PopulateProjects));
+            Request.Get("issues.json", "limit=100000&project_id=" + SearchProject.selection.id, new Request.ResponseCallback(PopulateIssues));
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -39,16 +38,17 @@ namespace WorkTimer
             Close();
         }
 
-        public void PopulateProjects(string response)
+        public void PopulateIssues(string response)
         {
             JObject R = JObject.Parse(response);
-            JArray list = R["projects"] as JArray;
+            JArray list = R["issues"] as JArray;
 
-            foreach (JObject project in list.Children())
+            foreach (JObject issue in list.Children())
             {
-                projects.Add(new Project {
-                    id = Convert.ToInt32(project["id"]),
-                    name = project["name"].ToString()
+                issues.Add(new Issue {
+                    id = Convert.ToInt32(issue["id"]),
+                    title = issue["subject"].ToString(),
+                    project = issue["project"]["name"].ToString()
                 });
             }
 
@@ -57,7 +57,7 @@ namespace WorkTimer
                 {
                     query.Text = "";
                     query.Enabled = true;
-                    query.DataSource = projects;
+                    query.DataSource = issues;
                     query.Focus();
 
                     btnOK.Enabled = true;
@@ -71,26 +71,26 @@ namespace WorkTimer
 
         private void query_SelectedIndexChanged(object sender, EventArgs e)
         {
-            selection = query.SelectedItem as Project;
-        }
-
-        private void SearchProject_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-            {
-                selection = null;
-                Close();
-            }
+            selection = query.SelectedItem as Issue;
         }
 
         private void query_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                selection = query.SelectedItem as Project;
+                selection = query.SelectedItem as Issue;
                 Close();
             }
             else if (e.KeyCode == Keys.Escape)
+            {
+                selection = null;
+                Close();
+            }
+        }
+
+        private void btnOK_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
             {
                 selection = null;
                 Close();

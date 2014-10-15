@@ -1,6 +1,6 @@
 ﻿namespace WorkTimer
 {
-    partial class SearchProject
+    partial class BrowseIssues
     {
         /// <summary>
         /// Required designer variable.
@@ -53,7 +53,7 @@
             this.lblSearch.Name = "lblSearch";
             this.lblSearch.Size = new System.Drawing.Size(221, 36);
             this.lblSearch.TabIndex = 1;
-            this.lblSearch.Text = "Search for a project by name and select it in the list to continue:";
+            this.lblSearch.Text = "Search for an issue by name and select it in the list to continue:";
             this.lblSearch.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // btnCancel
@@ -67,7 +67,7 @@
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            this.btnCancel.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SearchProject_KeyDown);
+            this.btnCancel.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnOK_KeyDown);
             // 
             // btnOK
             // 
@@ -81,9 +81,9 @@
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
-            this.btnOK.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SearchProject_KeyDown);
+            this.btnOK.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnOK_KeyDown);
             // 
-            // SearchProject
+            // BrowseIssues
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -93,11 +93,10 @@
             this.Controls.Add(this.query);
             this.Controls.Add(this.lblSearch);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "SearchProject";
+            this.Name = "BrowseIssues";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Search projects:";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SearchProject_KeyDown);
+            this.Text = "Browse Issues:";
             this.ResumeLayout(false);
 
         }
