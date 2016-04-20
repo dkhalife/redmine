@@ -34,20 +34,24 @@ namespace com.dkhalife.apps.redmine.api
         {
             try
             {
-                issues.Clear();
                 Issues result = new Issues();
                 Progress.Report(0);
 
+                string since = lastUpdated.ToString("yyyy-MM-dd\\THH:mm:ss\\Z");
+
                 do
                 {
-                    WebRequest wr = RedmineClient.Instance.CreatePaginatedRequest("issues.xml", result);
+                    WebRequest wr = RedmineClient.Instance.CreatePaginatedRequest("issues.xml", result, "&updated_on=%3E%3D{since}");
                     WebResponse response = await wr.GetResponseAsync();
                     XmlSerializer xml = new XmlSerializer(typeof(Issues));
                     result = (Issues)xml.Deserialize(response.GetResponseStream());
 
                     foreach (Issue i in result.Items)
                     {
-                        issues.Add(i.Id, i);
+                        if (issues.ContainsKey(i.Id))
+                            issues[i.Id] = i;
+                        else
+                            issues.Add(i.Id, i);
                     }
 
                     Progress.Report(issues.Count * 100.0 / result.TotalCount);

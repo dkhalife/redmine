@@ -15,7 +15,7 @@ namespace com.dkhalife.apps.redmine.api
 
         public static Progress Progress { get; private set; } = new Progress();
 
-        public static async Task<bool> Update(Dictionary<int, TimeEntry> timeEntries, DateTime lastUpdated)
+        public static async Task<bool> Update(Dictionary<int, TimeEntry> timeEntries)
         {
             try
             {

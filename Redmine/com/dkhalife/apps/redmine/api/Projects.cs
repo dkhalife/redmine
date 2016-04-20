@@ -30,7 +30,7 @@ namespace com.dkhalife.apps.redmine.api
             }
         }
 
-        public static async Task<bool> Update(Dictionary<int, Project> projects, DateTime lastUpdated)
+        public static async Task<bool> Update(Dictionary<int, Project> projects)
         {
             try
             {

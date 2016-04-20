@@ -87,9 +87,9 @@ namespace com.dkhalife.apps.redmine
             return await api.Trackers.Update(Trackers);
         }
 
-        private async Task<Boolean> UpdateProjectsAsync(DateTime lastUpdated)
+        private async Task<Boolean> UpdateProjectsAsync()
         {
-            return await api.Projects.Update(Projects, lastUpdated);
+            return await api.Projects.Update(Projects);
         }
 
         private async Task<Boolean> UpdateIssuesAsync(DateTime lastUpdated)
@@ -102,9 +102,9 @@ namespace com.dkhalife.apps.redmine
             return await api.Queries.Update(Queries);
         }
 
-        private async Task<Boolean> UpdateTimeEntriesAsync(DateTime lastUpdated)
+        private async Task<Boolean> UpdateTimeEntriesAsync()
         {
-            return await api.TimeEntries.Update(TimeEntries, lastUpdated);
+            return await api.TimeEntries.Update(TimeEntries);
         }
 
         private async Task<Boolean> UpdateUsersAsync()
@@ -139,7 +139,7 @@ namespace com.dkhalife.apps.redmine
             {
                 bool projectsSuccess = true;
 
-                projectsSuccess &= await UpdateProjectsAsync(LastProjectsUpdate);
+                projectsSuccess &= await UpdateProjectsAsync();
                 projectsSuccess &= await UpdateQueriesAsync();
                 projectsSuccess &= await UpdateUsersAsync();
 
@@ -154,7 +154,7 @@ namespace com.dkhalife.apps.redmine
                 bool issuesSuccess = true;
 
                 issuesSuccess &= await UpdateIssuesAsync(LastIssuesUpdate);
-                issuesSuccess &= await UpdateTimeEntriesAsync(LastIssuesUpdate);
+                issuesSuccess &= await UpdateTimeEntriesAsync();
 
                 globalSuccess &= issuesSuccess;
 
