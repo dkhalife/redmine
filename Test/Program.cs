@@ -29,6 +29,9 @@ namespace Test
 
             Thread th = new Thread(new ThreadStart(async () =>
             {
+                await r.TestConfiguration();
+                Console.WriteLine($"Is configuration set up correctly: {r.IsReady}");
+
                 Console.WriteLine("Take 1");
                 await r.SynchronizeAsync();
                 Console.WriteLine("Take 2");

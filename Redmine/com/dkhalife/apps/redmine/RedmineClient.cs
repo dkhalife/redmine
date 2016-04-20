@@ -35,7 +35,14 @@ namespace com.dkhalife.apps.redmine
         #endregion
 
         #region Configuration
+        public bool IsReady { get; private set; } = false;
+
         public RedmineOptions Options { get; private set; } = new RedmineOptions();
+
+        public async Task<Boolean> TestConfiguration()
+        {
+            return IsReady = await api.Trackers.Update(Trackers);
+        }
         #endregion
 
         #region Redmine Properties
@@ -69,47 +76,74 @@ namespace com.dkhalife.apps.redmine
         #region Update process
         private async Task<Boolean> UpdateTimeEntryActivitiesAsync()
         {
-            return await api.TimeEntryActivities.Update(TimeEntryActivities);
+            if(IsReady)
+                return await api.TimeEntryActivities.Update(TimeEntryActivities);
+
+            return false;
         }
 
         private async Task<Boolean> UpdateIssuePrioritiesAsync()
         {
-            return await api.IssuePriorities.Update(IssuePriorities);
+            if (IsReady)
+                return await api.IssuePriorities.Update(IssuePriorities);
+
+            return false;
         }
 
         private async Task<Boolean> UpdateIssueStatusesAsync()
         {
-            return await api.IssueStatuses.Update(IssueStatuses);
+            if (IsReady)
+                return await api.IssueStatuses.Update(IssueStatuses);
+
+            return false;
         }
 
         private async Task<Boolean> UpdateTrackersAsync()
         {
-            return await api.Trackers.Update(Trackers);
+            if (IsReady)
+                return await api.Trackers.Update(Trackers);
+
+            return false;
         }
 
         private async Task<Boolean> UpdateProjectsAsync()
         {
-            return await api.Projects.Update(Projects);
+            if (IsReady)
+                return await api.Projects.Update(Projects);
+
+            return false;
         }
 
         private async Task<Boolean> UpdateIssuesAsync(DateTime lastUpdated)
         {
-            return await api.Issues.Update(Issues, lastUpdated);
+            if (IsReady)
+                return await api.Issues.Update(Issues, lastUpdated);
+
+            return false;
         }
 
         private async Task<Boolean> UpdateQueriesAsync()
         {
-            return await api.Queries.Update(Queries);
+            if (IsReady)
+                return await api.Queries.Update(Queries);
+
+            return false;
         }
 
         private async Task<Boolean> UpdateTimeEntriesAsync()
         {
-            return await api.TimeEntries.Update(TimeEntries);
+            if (IsReady)
+                return await api.TimeEntries.Update(TimeEntries);
+
+            return false;
         }
 
         private async Task<Boolean> UpdateUsersAsync()
         {
-            return await api.Users.Update(Users);
+            if (IsReady)
+                return await api.Users.Update(Users);
+
+            return false;
         }
 
         private DateTime LastIssuesUpdate = DateTime.MinValue;

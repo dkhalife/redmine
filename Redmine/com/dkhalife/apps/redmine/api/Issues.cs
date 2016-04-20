@@ -41,7 +41,7 @@ namespace com.dkhalife.apps.redmine.api
 
                 do
                 {
-                    WebRequest wr = RedmineClient.Instance.CreatePaginatedRequest("issues.xml", result, "&updated_on=%3E%3D{since}");
+                    WebRequest wr = RedmineClient.Instance.CreatePaginatedRequest("issues.xml", result, $"updated_on=%3E%3D{since}");
                     WebResponse response = await wr.GetResponseAsync();
                     XmlSerializer xml = new XmlSerializer(typeof(Issues));
                     result = (Issues)xml.Deserialize(response.GetResponseStream());
