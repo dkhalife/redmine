@@ -15,6 +15,21 @@ namespace com.dkhalife.apps.redmine.api
 
         public static Progress Progress { get; private set; } = new Progress();
 
+        public static async Task<Project> Get(int project_id)
+        {
+            try
+            {
+                WebRequest wr = RedmineClient.Instance.CreateRequest($"projects/{project_id}.xml");
+                WebResponse response = await wr.GetResponseAsync();
+                XmlSerializer xml = new XmlSerializer(typeof(Project));
+                return (Project)xml.Deserialize(response.GetResponseStream());
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public static async Task<bool> Update(Dictionary<int, Project> projects, DateTime lastUpdated)
         {
             try

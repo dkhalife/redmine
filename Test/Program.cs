@@ -34,6 +34,11 @@ namespace Test
                 Console.WriteLine("Take 2");
                 await r.SynchronizeAsync();
 
+                //Issue i = await com.dkhalife.apps.redmine.api.Issues.Get(1484);
+                //Project p = await com.dkhalife.apps.redmine.api.Projects.Get(4);
+                //User u = await com.dkhalife.apps.redmine.api.Users.Get(4);
+                Console.ReadLine();
+
                 /*Console.WriteLine("Time Entry Activities");
                 await r.UpdateTimeEntryActivitiesAsync();
                 foreach(TimeEntryActivity a in r.TimeEntryActivities.Values)

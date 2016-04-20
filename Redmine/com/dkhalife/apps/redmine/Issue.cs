@@ -7,6 +7,7 @@ using System.Xml.Serialization;
 
 namespace com.dkhalife.apps.redmine
 {
+    [XmlRoot("issue")]
     public class Issue
     {
         [XmlElement("id")]

@@ -8,6 +8,7 @@ using System.Xml.Serialization;
 
 namespace com.dkhalife.apps.redmine
 {
+    [XmlRoot("project")]
     public class Project
     {
         [XmlElement("id")]

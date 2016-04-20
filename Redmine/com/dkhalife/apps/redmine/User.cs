@@ -3,6 +3,7 @@ using System.Xml.Serialization;
 
 namespace com.dkhalife.apps.redmine
 {
+    [XmlRoot("user")]
     public class User
     {
         [XmlElement("id")]
