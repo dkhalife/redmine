@@ -1,9 +1,11 @@
-﻿using System;
+﻿using com.dkhalife.apps.redmine.core;
+using System;
 using System.Xml.Serialization;
 
 namespace com.dkhalife.apps.redmine
 {
     [XmlRoot("user")]
+    [RedmineApi("users")]
     public class User
     {
         [XmlElement("id")]

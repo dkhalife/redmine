@@ -1,4 +1,5 @@
-﻿using Redmine.com.dkhalife.apps.redmine.core;
+﻿using com.dkhalife.apps.redmine.core;
+using Redmine.com.dkhalife.apps.redmine.core;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -8,6 +9,7 @@ using System.Xml.Serialization;
 namespace com.dkhalife.apps.redmine.api
 {
     [XmlRoot("projects")]
+    [RedmineApi("projects")]
     public class Projects : PaginatedList
     {
         [XmlElement("project")]
@@ -17,52 +19,31 @@ namespace com.dkhalife.apps.redmine.api
 
         public static async Task<Project> Get(int project_id)
         {
-            try
-            {
-                WebRequest wr = RedmineClient.Instance.CreateRequest($"projects/{project_id}.xml");
-                WebResponse response = await wr.GetResponseAsync();
-                XmlSerializer xml = new XmlSerializer(typeof(Project));
-                return (Project)xml.Deserialize(response.GetResponseStream());
-            }
-            catch
-            {
-                return null;
-            }
+            return await RedmineApi.GetSingle<Project>(project_id);
         }
 
         public static async Task<bool> Update(Dictionary<int, Project> projects)
         {
-            try
-            {
-                projects.Clear();
-                Projects result = new Projects();
-                Progress.Report(0);
+            projects.Clear();
+            Projects result = new Projects();
+            Progress.Report(0);
                 
-                do
-                {
-                    WebRequest wr = RedmineClient.Instance.CreatePaginatedRequest("projects.xml", result);
-                    WebResponse response = await wr.GetResponseAsync();
-                    XmlSerializer xml = new XmlSerializer(typeof(Projects));
-                    result = (Projects)xml.Deserialize(response.GetResponseStream());
-
-                    foreach (Project p in result.Items)
-                    {
-                        projects.Add(p.Id, p);
-                    }
-
-                    Progress.Report(projects.Count * 100.0 / result.TotalCount);
-                    result.Offset += result.Limit;
-                }
-                while (projects.Count < result.TotalCount);
-                Progress.Report(100);
-
-                return true;
-            }
-            catch
+            do
             {
-                // TODO: Log the exception
-                return false;
+                result = await RedmineApi.GetPaginatedList<Projects>(result);
+
+                foreach (Project p in result.Items)
+                {
+                    projects.Add(p.Id, p);
+                }
+
+                Progress.Report(projects.Count * 100.0 / result.TotalCount);
+                result.Offset += result.Limit;
             }
+            while (projects.Count < result.TotalCount);
+            Progress.Report(100);
+
+            return true;
         }
     }
 }

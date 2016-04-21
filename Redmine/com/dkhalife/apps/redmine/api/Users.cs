@@ -1,4 +1,5 @@
-﻿using Redmine.com.dkhalife.apps.redmine.core;
+﻿using com.dkhalife.apps.redmine.core;
+using Redmine.com.dkhalife.apps.redmine.core;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -8,6 +9,7 @@ using System.Xml.Serialization;
 namespace com.dkhalife.apps.redmine.api
 {
     [XmlRoot("users")]
+    [RedmineApi("users")]
     public class Users : PaginatedList
     {
         [XmlElement("user")]
@@ -17,52 +19,31 @@ namespace com.dkhalife.apps.redmine.api
 
         public static async Task<User> Get(int user_id)
         {
-            try
-            {
-                WebRequest wr = RedmineClient.Instance.CreateRequest($"users/{user_id}.xml");
-                WebResponse response = await wr.GetResponseAsync();
-                XmlSerializer xml = new XmlSerializer(typeof(User));
-                return (User)xml.Deserialize(response.GetResponseStream());
-            }
-            catch
-            {
-                return null;
-            }
+            return await RedmineApi.GetSingle<User>(user_id);
         }
 
         public static async Task<bool> Update(Dictionary<int, User> users)
         {
-            try
-            {
-                users.Clear();
-                Users result = new Users();
-                Progress.Report(0);
+            users.Clear();
+            Users result = new Users();
+            Progress.Report(0);
 
-                do
+            do
+            {
+                result = await RedmineApi.GetPaginatedList<Users>(result);
+
+                foreach (User u in result.Items)
                 {
-                    WebRequest wr = RedmineClient.Instance.CreatePaginatedRequest("users.xml", result);
-                    WebResponse response = await wr.GetResponseAsync();
-                    XmlSerializer xml = new XmlSerializer(typeof(Users));
-                    result = (Users)xml.Deserialize(response.GetResponseStream());
-
-                    foreach (User u in result.Items)
-                    {
-                        users.Add(u.Id, u);
-                    }
-
-                    Progress.Report(users.Count * 100.0 / result.TotalCount);
-                    result.Offset += result.Limit;
+                    users.Add(u.Id, u);
                 }
-                while (users.Count < result.TotalCount);
-                Progress.Report(100);
 
-                return true;
+                Progress.Report(users.Count * 100.0 / result.TotalCount);
+                result.Offset += result.Limit;
             }
-            catch
-            {
-                // TODO: Log the exception
-                return false;
-            }
+            while (users.Count < result.TotalCount);
+            Progress.Report(100);
+
+            return true;
         }
     }
 }

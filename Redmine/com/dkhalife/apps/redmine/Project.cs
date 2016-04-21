@@ -1,4 +1,5 @@
-﻿using System;
+﻿using com.dkhalife.apps.redmine.core;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -9,6 +10,7 @@ using System.Xml.Serialization;
 namespace com.dkhalife.apps.redmine
 {
     [XmlRoot("project")]
+    [RedmineApi("projects")]
     public class Project
     {
         [XmlElement("id")]
