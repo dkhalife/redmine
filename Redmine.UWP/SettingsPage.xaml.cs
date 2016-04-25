@@ -21,6 +21,7 @@ namespace Redmine.UWP
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
+    [Page("Settings")]
     public sealed partial class Settings : Page {
 
         private RedmineOptions Server = RedmineClient.Instance.Options;

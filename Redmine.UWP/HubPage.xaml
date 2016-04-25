@@ -15,7 +15,7 @@
         <RelativePanel Background="{ThemeResource AppBarBackgroundThemeBrush}" VerticalAlignment="Top">
             <Button Content="&#xE700;" FontFamily="Segoe MDL2 Assets" Background="{ThemeResource AppBarBackgroundThemeBrush}" Height="{ThemeResource AppBarThemeMinHeight}" Width="{ThemeResource AppBarThemeMinHeight}" RelativePanel.AlignLeftWithPanel="True" Name="MenuButton" Tapped="MenuButton_Tapped" />
 
-            <TextBlock RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" FontSize="32" Name="PageTitle"></TextBlock>
+            <TextBlock RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" FontSize="32" Text="{x:Bind Path=PageTitle}" />
 
             <Button Background="{ThemeResource AppBarBackgroundThemeBrush}" Height="{ThemeResource AppBarThemeMinHeight}" Width="{ThemeResource AppBarThemeMinHeight}" RelativePanel.AlignRightWithPanel="True" Name="MyPageButton" Tapped="MyPageButton_Tapped">
                 <SymbolIcon Symbol="Calendar" />
