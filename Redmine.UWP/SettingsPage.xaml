@@ -1,0 +1,49 @@
+﻿<Page
+    x:Class="Redmine.UWP.Settings"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Redmine.UWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <TextBlock Text="Scheme" />
+        <ComboBox Name="Scheme">
+            <ComboBoxItem IsSelected="True">HTTP</ComboBoxItem>
+            <ComboBoxItem>HTTPS</ComboBoxItem>
+        </ComboBox>
+        
+        <TextBlock Text="Server" />
+        <TextBox Name="Host" Text="{x:Bind Path=Server.Host, Mode=TwoWay}"/>
+
+        <TextBlock Text="Port" />
+        <TextBox Name="Port" Text="{x:Bind Path=Server.Port, Mode=TwoWay}"/>
+
+        <TextBlock Text="Username" />
+        <TextBox Name="Username" Text="{x:Bind Path=Server.Username, Mode=TwoWay}"/>
+
+        <TextBlock Text="Password" />
+        <PasswordBox Name="Password"/>
+
+        <TextBlock Text="Api Key" />
+        <TextBox Name="ApiKey"/>
+
+        <TextBlock Text="Theme" />
+        <ComboBox Name="Theme">
+            <ComboBoxItem IsSelected="True">Redmine</ComboBoxItem>
+            <ComboBoxItem>Light</ComboBoxItem>
+            <ComboBoxItem>Dark</ComboBoxItem>
+            <ComboBoxItem>Same as System</ComboBoxItem>
+        </ComboBox>
+
+        <TextBlock Text="Issues Update Frequency" />
+        <TextBox Name="UpdateFrequency" Text="{x:Bind Path=Server.UpdateFrequency}" />
+
+        <TextBlock Text="Projects Update Frequency" />
+        <TextBox Name="ProjectsUpdateFrequency" Text="{x:Bind Path=Server.ProjectsUpdateFrequency}" />
+
+        <TextBlock Text="Meta Update Frequency" />
+        <TextBox Name="EnumerationsUpdateFrequency" Text="{x:Bind Path=Server.EnumerationsUpdateFrequency}" />
+    </StackPanel>
+</Page>
