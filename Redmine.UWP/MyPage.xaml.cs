@@ -20,7 +20,7 @@ namespace Redmine.UWP
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    [Page("Redmine")]
+    [Page("Summary")]
     public sealed partial class MyPage : Page
     {
         public MyPage()
