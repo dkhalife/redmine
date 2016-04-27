@@ -305,6 +305,12 @@
                                 <TextBlock Margin="10,0,0,0">Settings</TextBlock>
                             </StackPanel>
                         </ListBoxItem>
+                        <ListBoxItem Tapped="Feedback_Tapped">
+                            <StackPanel Orientation="Horizontal">
+                                <SymbolIcon Symbol="Emoji2" />
+                                <TextBlock Margin="10,0,0,0">Feedback</TextBlock>
+                            </StackPanel>
+                        </ListBoxItem>
                         <ListBoxItem Tapped="Logout_Tapped">
                             <StackPanel Orientation="Horizontal">
                                 <SymbolIcon Symbol="Contact" />

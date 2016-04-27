@@ -35,6 +35,7 @@ namespace Redmine.UWP
         {
             PageTitle = page.GetTypeInfo().GetCustomAttribute<PageAttribute>().Title;
             SubPage.Navigate(page);
+            Menu.IsPaneOpen = false;
         }
 
         private void MenuButton_Tapped(object sender, TappedRoutedEventArgs e)
@@ -70,6 +71,17 @@ namespace Redmine.UWP
         private void Settings_Tapped(object sender, TappedRoutedEventArgs e)
         {
             NavigateSubPage(typeof(Settings));
+        }
+
+        private async void Feedback_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            bool success = await Windows.System.Launcher.LaunchUriAsync(new Uri(@"windows-feedback://"));
+
+            if (!success)
+            {
+                // URI launched
+                throw new InvalidOperationException();
+            }
         }
 
         private void Logout_Tapped(object sender, TappedRoutedEventArgs e)
