@@ -60,7 +60,7 @@ namespace Redmine.UWP
             {
                 if (rootFrame.Content == null)
                 {
-                    rootFrame.Navigate(typeof(FirstRunExperience), e.Arguments);
+                    rootFrame.Navigate(typeof(LoginPage), e.Arguments);
                 }
 
                 // Ensure the current window is active

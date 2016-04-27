@@ -7,34 +7,67 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Image Source="Assets/RedmineLogo.png" VerticalAlignment="Top" Margin="0,80,0,0" />
+    <ScrollViewer Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel Padding="20">
+            <Image Source="Assets/RedmineLogo.png" VerticalAlignment="Top" Margin="0,50,0,30" />
 
-        <StackPanel Orientation="Vertical">
-            <TextBlock>Server</TextBlock>
-            <ListBox>
-                <ListBoxItem>Add a New Server:</ListBoxItem>
-            </ListBox>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Margin="0,0,0,5">Profile:</TextBlock>
+                <ComboBox Name="Profile" Width="200" SelectionChanged="Profile_SelectionChanged" PlaceholderText="Add a new profile">
+                    <ComboBoxItem></ComboBoxItem>
+                </ComboBox>
 
-            <TextBlock>Login Using:</TextBlock>
-            <ListBox>
-                <ListBoxItem>Account</ListBoxItem>
-                <ListBoxItem>API Key</ListBoxItem>
-            </ListBox>
+                <TextBlock Margin="0,20,0,5">Host:</TextBlock>
+                <TextBox Name="Host" PlaceholderText="redmine.example.com"></TextBox>
 
-            <TextBlock>Username:</TextBlock>
-            <TextBox Name="Username"></TextBox>
+                <Grid>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Margin="0,20,0,5">Scheme:</TextBlock>
+                        <ComboBox Name="Scheme" Width="100">
+                            <ComboBoxItem IsSelected="True">HTTP</ComboBoxItem>
+                            <ComboBoxItem>HTTPS</ComboBoxItem>
+                        </ComboBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Right">
+                        <TextBlock Margin="0,20,0,5">Port:</TextBlock>
+                        <TextBox Name="Port" Width="100" HorizontalAlignment="Left" PlaceholderText="80"></TextBox>
+                    </StackPanel>
+                </Grid>
+            
+                <TextBlock Margin="0,20,0,5">Authenticate using:</TextBlock>
+                <Pivot Padding="-10,0,0,0" Margin="0,0,-20,0">
+                    <PivotItem Header="Account">
+                        <StackPanel>
+                            <TextBlock Margin="0,20,0,5">Username:</TextBlock>
+                            <TextBox Name="Username" PlaceholderText="domain\username"></TextBox>
 
-            <TextBlock>Password:</TextBlock>
-            <TextBox Name="Password"></TextBox>
+                            <TextBlock Margin="0,20,0,5">Password:</TextBlock>
+                            <PasswordBox Name="Password" PlaceholderText=""></PasswordBox>
+                        </StackPanel>
+                    </PivotItem>
+                    <PivotItem Header="API Key">
+                        <StackPanel>
+                            <TextBlock Margin="0,20,0,5">API Key:</TextBlock>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition Width="40"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBox Name="ApiKey"></TextBox>
+                                <Button Grid.Column="1" FontFamily="Segoe MDL2 Assets" Content="&#xE82F;" BorderThickness="0,2,2,2" BorderBrush="Gray" Background="Yellow" Height="32" />
+                            </Grid>
+                        </StackPanel>
+                    </PivotItem>
+                </Pivot>
 
-            <TextBlock>API Key:</TextBlock>
-            <TextBox Name="ApiKey"></TextBox>
-
-            <StackPanel Orientation="Horizontal">
-                <Button>Login</Button>
-                <ProgressRing IsActive="True" />
+                <CheckBox Name="AutoLogin" Margin="0,20,0,0" IsChecked="True"> Enable automatic login</CheckBox>
+            
+                <StackPanel Margin="0,30,0,0" Orientation="Horizontal">
+                    <Button Name="Login" Tapped="Login_Tapped">Login</Button>
+                
+                    <ProgressRing Name="Loading" Margin="10,0,0,0" IsActive="False" />
+                </StackPanel>
             </StackPanel>
         </StackPanel>
-    </Grid>
+    </ScrollViewer>
 </Page>

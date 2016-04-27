@@ -86,8 +86,8 @@ namespace Redmine.UWP
 
         private void Logout_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            // Todo: implement logout
-            throw new NotImplementedException();
+            // TOOD: Do logout logic
+            Frame.Navigate(typeof(LoginPage));
         }
     }
 }

@@ -26,5 +26,25 @@ namespace Redmine.UWP
         {
             this.InitializeComponent();
         }
+
+        private void Login_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            Host.IsEnabled = false;
+            Username.IsEnabled = false;
+            Password.IsEnabled = false;
+            ApiKey.IsEnabled = false;
+            Login.IsEnabled = false;
+            AutoLogin.IsEnabled = false;
+
+            Loading.IsActive = true;
+            
+            // If everythign is succssful and it is the first sync
+            // show the setting up page
+        }
+
+        private void Profile_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // TODO: Update profile fields
+        }
     }
 }
