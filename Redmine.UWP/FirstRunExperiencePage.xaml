@@ -7,7 +7,46 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    <Grid Background="#507aaa" Padding="30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Image Source="Assets/RedmineLogo.png"></Image>
+        
+        <FlipView Background="#507aaa" Margin="-30,50,-30,0" Padding="30,0,30,0" Grid.Row="1">
+            <StackPanel>
+                <Canvas Width="200" Height="200">
+                    <TextBlock Canvas.Left="0" Canvas.Top="20" FontFamily="Segoe MDL2 Assets" FontSize="58">&#xE8F1;</TextBlock>
+                    <TextBlock Canvas.Left="142" Canvas.Top="20" FontFamily="Segoe MDL2 Assets" FontSize="58">&#xE77F;</TextBlock>
+                    <TextBlock Canvas.Left="71" Canvas.Top="120" FontFamily="Segoe MDL2 Assets" FontSize="58">&#xE71C;</TextBlock>
+                </Canvas>
+                <TextBlock HorizontalAlignment="Center" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,0,0,20">Project at your fingertips</TextBlock>
+                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Margin="0,10,0,0" TextAlignment="Center">Browse and edit just about anything</TextBlock>
+                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Margin="0,10,0,0" TextAlignment="Center">Projects, Issues, Queries, Wiki...</TextBlock>
+            </StackPanel>
+            <StackPanel>
+                <Canvas Width="200" Height="200">
+                    <TextBlock Canvas.Left="71" Canvas.Top="0" FontFamily="Segoe MDL2 Assets" FontSize="58">&#xE753;</TextBlock>
+                    <TextBlock Canvas.Left="0" Canvas.Top="120" FontFamily="Segoe MDL2 Assets" FontSize="58">&#xE770;</TextBlock>
+                    <TextBlock Canvas.Left="142" Canvas.Top="120" FontFamily="Segoe MDL2 Assets" FontSize="58">&#xE77F;</TextBlock>
+                </Canvas>
+                <TextBlock HorizontalAlignment="Center" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,0,0,20">Work offline</TextBlock>
+                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Margin="0,10,0,0" TextAlignment="Center">Keep working even when your internet connection is unavailable</TextBlock>
+                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Margin="0,10,0,0" TextAlignment="Center">You work will be synchronized as soon as you get back online</TextBlock>
+            </StackPanel>
+            <StackPanel>
+                <Canvas Width="200" Height="200">
+                    <TextBlock Canvas.Left="0" Canvas.Top="0" FontFamily="Segoe MDL2 Assets" FontSize="58">&#xE787;</TextBlock>
+                    <TextBlock Canvas.Left="142" Canvas.Top="0" FontFamily="Segoe MDL2 Assets" FontSize="58">&#xE138;</TextBlock>
+                    <TextBlock Canvas.Left="0" Canvas.Top="120" FontFamily="Segoe MDL2 Assets" FontSize="58">&#xE8F2;</TextBlock>
+                    <TextBlock Canvas.Left="142" Canvas.Top="120" FontFamily="Segoe MDL2 Assets" FontSize="58">&#xE958;</TextBlock>
+                </Canvas>
+                <TextBlock HorizontalAlignment="Center" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,0,0,20">Stay on track</TextBlock>
+                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Margin="0,10,0,0" TextAlignment="Center">With Calendar, Live Tiles, &amp; Cortana integration you will always be aware of your due tasks and projets</TextBlock>
+                <Button HorizontalAlignment="Center" Margin="0,20,0,0" Tapped="GetStarted_Tapped">Get Started</Button>
+            </StackPanel>
+        </FlipView>
     </Grid>
 </Page>

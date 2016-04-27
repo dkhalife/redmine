@@ -26,5 +26,10 @@ namespace Redmine.UWP
         {
             this.InitializeComponent();
         }
+        
+        private void GetStarted_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(LoginPage));
+        }
     }
 }
