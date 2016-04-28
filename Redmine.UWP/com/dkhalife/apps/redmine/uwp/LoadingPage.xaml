@@ -1,0 +1,17 @@
+﻿<Page
+    x:Class="com.dkhalife.apps.redmine.UWP.LoadingPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:com.dkhalife.apps.redmine.UWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Loaded="Page_Loaded">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel VerticalAlignment="Center" Margin="50,0,50,0">
+            <ProgressRing Height="100" Width="100" IsActive="True" Margin="0,0,0,40" />
+            <TextBlock Name="CurrentTask" TextAlignment="Center" Margin="0,0,0,5">Setting up...</TextBlock>
+            <ProgressBar Name="CurrentProgress"></ProgressBar>
+        </StackPanel>
+    </Grid>
+</Page>

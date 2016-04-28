@@ -1,8 +1,8 @@
 ﻿<Application
-    x:Class="Redmine.UWP.App"
+    x:Class="com.dkhalife.apps.redmine.UWP.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Redmine.UWP"
+    xmlns:local="using:com.dkhalife.apps.redmine.UWP"
     RequestedTheme="Light">
     
 </Application>

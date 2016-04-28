@@ -1,8 +1,8 @@
 ﻿<Page
-    x:Class="Redmine.UWP.LoginPage"
+    x:Class="com.dkhalife.apps.redmine.UWP.LoginPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Redmine.UWP"
+    xmlns:local="using:com.dkhalife.apps.redmine.UWP"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -12,10 +12,10 @@
             <Image Source="Assets/RedmineLogo.png" VerticalAlignment="Top" Margin="0,50,0,30" />
 
             <StackPanel Orientation="Vertical">
-                <TextBlock Margin="0,0,0,5">Profile:</TextBlock>
+                <!--TextBlock Margin="0,0,0,5">Profile:</>
                 <ComboBox Name="Profile" Width="200" SelectionChanged="Profile_SelectionChanged" PlaceholderText="Add a new profile">
                     <ComboBoxItem></ComboBoxItem>
-                </ComboBox>
+                </ComboBox-->
 
                 <TextBlock Margin="0,20,0,5">Host:</TextBlock>
                 <TextBox Name="Host" PlaceholderText="redmine.example.com"></TextBox>
@@ -65,7 +65,7 @@
                 <StackPanel Margin="0,30,0,0" Orientation="Horizontal">
                     <Button Name="Login" Tapped="Login_Tapped">Login</Button>
                 
-                    <ProgressRing Name="Loading" Margin="10,0,0,0" IsActive="False" />
+                    <ProgressRing Name="LoadingRing" Margin="10,0,0,0" IsActive="False" />
                 </StackPanel>
             </StackPanel>
         </StackPanel>

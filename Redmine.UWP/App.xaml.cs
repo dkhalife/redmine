@@ -1,21 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace Redmine.UWP
+namespace com.dkhalife.apps.redmine.UWP
 {
     sealed partial class App : Application
     {
@@ -60,7 +50,12 @@ namespace Redmine.UWP
             {
                 if (rootFrame.Content == null)
                 {
+                    // https://msdn.microsoft.com/en-us/library/windows/apps/windows.storage.applicationdata.localsettings.aspx#Y0
+                    // TODO: Check if first run and not debug
+                    //rootFrame.Navigate(typeof(FirstRunExperience), e.Arguments);
+                    // TODO: Check if autologin
                     rootFrame.Navigate(typeof(LoginPage), e.Arguments);
+                    //rootFrame.Navigate(typeof(MyPage), e.Arguments);
                 }
 
                 // Ensure the current window is active
@@ -92,5 +87,7 @@ namespace Redmine.UWP
             //TODO: Save application state and stop any background activity
             deferral.Complete();
         }
+
+        internal static RedmineClient Client { get; private set; } = RedmineClient.Instance;
     }
 }

@@ -7,7 +7,7 @@
     <ProjectGuid>{0EB4DDC3-61F8-4474-8289-8ABAA66D1A04}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Redmine.UWP</RootNamespace>
+    <RootNamespace>com.dkhalife.apps.redmine</RootNamespace>
     <AssemblyName>Redmine.UWP</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
@@ -98,33 +98,36 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FirstRunExperiencePage.xaml.cs">
+    <Compile Include="com\dkhalife\apps\redmine\uwp\FirstRunExperiencePage.xaml.cs">
       <DependentUpon>FirstRunExperiencePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="HubPage.xaml.cs">
+    <Compile Include="com\dkhalife\apps\redmine\uwp\HubPage.xaml.cs">
       <DependentUpon>HubPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="IssuesPage.xaml.cs">
+    <Compile Include="com\dkhalife\apps\redmine\uwp\IssuesPage.xaml.cs">
       <DependentUpon>IssuesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LoginPage.xaml.cs">
+    <Compile Include="com\dkhalife\apps\redmine\uwp\LoadingPage.xaml.cs">
+      <DependentUpon>LoadingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="com\dkhalife\apps\redmine\uwp\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MyPage.xaml.cs">
+    <Compile Include="com\dkhalife\apps\redmine\uwp\MyPage.xaml.cs">
       <DependentUpon>MyPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PageAttribute.cs" />
-    <Compile Include="ProjectsPage.xaml.cs">
+    <Compile Include="com\dkhalife\apps\redmine\uwp\PageAttribute.cs" />
+    <Compile Include="com\dkhalife\apps\redmine\uwp\ProjectsPage.xaml.cs">
       <DependentUpon>ProjectsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QueriesPage.xaml.cs">
+    <Compile Include="com\dkhalife\apps\redmine\uwp\QueriesPage.xaml.cs">
       <DependentUpon>QueriesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SettingsPage.xaml.cs">
+    <Compile Include="com\dkhalife\apps\redmine\uwp\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UsersPage.xaml.cs">
+    <Compile Include="com\dkhalife\apps\redmine\uwp\UsersPage.xaml.cs">
       <DependentUpon>UsersPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -152,39 +155,43 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="FirstRunExperiencePage.xaml">
+    <Page Include="com\dkhalife\apps\redmine\uwp\FirstRunExperiencePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="HubPage.xaml">
+    <Page Include="com\dkhalife\apps\redmine\uwp\HubPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="IssuesPage.xaml">
+    <Page Include="com\dkhalife\apps\redmine\uwp\IssuesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="LoginPage.xaml">
+    <Page Include="com\dkhalife\apps\redmine\uwp\LoadingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="com\dkhalife\apps\redmine\uwp\LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MyPage.xaml">
+    <Page Include="com\dkhalife\apps\redmine\uwp\MyPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ProjectsPage.xaml">
+    <Page Include="com\dkhalife\apps\redmine\uwp\ProjectsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="QueriesPage.xaml">
+    <Page Include="com\dkhalife\apps\redmine\uwp\QueriesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SettingsPage.xaml">
+    <Page Include="com\dkhalife\apps\redmine\uwp\SettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UsersPage.xaml">
+    <Page Include="com\dkhalife\apps\redmine\uwp\UsersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

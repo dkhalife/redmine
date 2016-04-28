@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Redmine.UWP
+namespace com.dkhalife.apps.redmine.UWP.core
 {
     internal class PageAttribute : Attribute
     {
