@@ -1,10 +1,7 @@
 ﻿using com.dkhalife.apps.redmine;
 using com.dkhalife.apps.redmine.api;
 using System;
-using System.IO;
-using System.Net;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Test
 {
@@ -21,11 +18,11 @@ namespace Test
             // TODO: Load the last updated
 
 
-            Issues.Progress.Updated += Progress_Updated;
-            Projects.Progress.Updated += Progress_Updated;
-            Queries.Progress.Updated += Progress_Updated;
-            TimeEntries.Progress.Updated += Progress_Updated;
-            Users.Progress.Updated += Progress_Updated;
+            Issues.Progress.Updating += Progress_Updated;
+            Projects.Progress.Updating += Progress_Updated;
+            Queries.Progress.Updating += Progress_Updated;
+            TimeEntries.Progress.Updating += Progress_Updated;
+            Users.Progress.Updating += Progress_Updated;
 
             Thread th = new Thread(new ThreadStart(async () =>
             {
@@ -121,7 +118,7 @@ namespace Test
             Console.ReadLine();
         }
 
-        private static void Progress_Updated(object sender, double e)
+        private static void Progress_Updated(object sender, int e)
         {
             Console.WriteLine($"{sender} - {e}%");
         }

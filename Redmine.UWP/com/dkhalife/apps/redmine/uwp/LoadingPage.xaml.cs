@@ -25,35 +25,37 @@ namespace com.dkhalife.apps.redmine.UWP
             api.Users.Progress.Updating += Users_Updating;
 
             await App.Client.SynchronizeAsync();
+
+            Frame.Navigate(typeof(HubPage));
         }
 
         private void Users_Updating(object sender, int value)
         {
-            if (value == 0) CurrentTask.Text = "Updating users";
+            CurrentTask.Text = "Updating users";
             CurrentProgress.Value = value;
         }
 
         private void TimeEntries_Updating(object sender, int value)
         {
-            if (value == 0) CurrentTask.Text = "Updating time entries";
+            CurrentTask.Text = "Updating time entries";
             CurrentProgress.Value = value;
         }
 
         private void Queries_Updating(object sender, int value)
         {
-            if (value == 0) CurrentTask.Text = "Updating queries";
+            CurrentTask.Text = "Updating queries";
             CurrentProgress.Value = value;
         }
 
         private void Projects_Updating(object sender, int value)
         {
-            if (value == 0) CurrentTask.Text = "Updating projects";
+            CurrentTask.Text = "Updating projects";
             CurrentProgress.Value = value;
         }
 
         private void Issues_Updating(object sender, int value)
         {
-            if (value == 0) CurrentTask.Text = "Updating issues";
+            CurrentTask.Text = "Updating issues";
             CurrentProgress.Value = value;
         }
     }

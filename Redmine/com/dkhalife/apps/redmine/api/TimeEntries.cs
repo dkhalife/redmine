@@ -1,8 +1,6 @@
 ﻿using com.dkhalife.apps.redmine.core;
 using Redmine.com.dkhalife.apps.redmine.core;
-using System;
 using System.Collections.Generic;
-using System.Net;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
@@ -32,7 +30,7 @@ namespace com.dkhalife.apps.redmine.api
                     timeEntries.Add(e.Id, e);
                 }
 
-                Progress.Report(timeEntries.Count * 100.0 / result.TotalCount);
+                Progress.Report(timeEntries.Count * 100 / result.TotalCount);
                 result.Offset += result.Limit;
             }
             while (timeEntries.Count < result.TotalCount);

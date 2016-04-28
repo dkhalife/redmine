@@ -8,7 +8,7 @@
     <ProjectGuid>{67F9D3A8-F71E-4428-913F-C37AE82CDB24}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Redmine</RootNamespace>
+    <RootNamespace>com.dkhalife.apps.redmine</RootNamespace>
     <AssemblyName>Redmine</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>

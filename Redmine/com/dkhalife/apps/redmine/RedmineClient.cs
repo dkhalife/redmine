@@ -1,11 +1,8 @@
 ﻿using com.dkhalife.apps.redmine.api;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
-using System.Xml.Serialization;
 
 namespace com.dkhalife.apps.redmine
 {
@@ -37,7 +34,7 @@ namespace com.dkhalife.apps.redmine
         #region Configuration
         public bool IsReady { get; private set; } = false;
 
-        public RedmineOptions Options { get; private set; } = new RedmineOptions();
+        public RedmineOptions Options { get; set; } = new RedmineOptions();
 
         public async Task<Boolean> TestConfiguration()
         {
@@ -62,7 +59,7 @@ namespace com.dkhalife.apps.redmine
         {
             UriBuilder uri = new UriBuilder(Options.Scheme, Options.Host, Options.Port, path, query);
             HttpWebRequest wr = HttpWebRequest.CreateHttp(uri.ToString());
-            wr.Credentials = (Options.ApiKey != null) ? new NetworkCredential(Options.ApiKey, "") : new NetworkCredential(Options.Username, Options.Password);
+            wr.Credentials = (!string.IsNullOrEmpty(Options.ApiKey)) ? new NetworkCredential(Options.ApiKey, "") : new NetworkCredential(Options.Username, Options.Password);
 
             return wr;
         }

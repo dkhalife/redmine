@@ -1,8 +1,6 @@
 ﻿using com.dkhalife.apps.redmine.core;
 using Redmine.com.dkhalife.apps.redmine.core;
-using System;
 using System.Collections.Generic;
-using System.Net;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
@@ -37,7 +35,7 @@ namespace com.dkhalife.apps.redmine.api
                     users.Add(u.Id, u);
                 }
 
-                Progress.Report(users.Count * 100.0 / result.TotalCount);
+                Progress.Report(users.Count * 100 / result.TotalCount);
                 result.Offset += result.Limit;
             }
             while (users.Count < result.TotalCount);

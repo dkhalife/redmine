@@ -1,11 +1,7 @@
-﻿using com.dkhalife.apps.redmine;
-using com.dkhalife.apps.redmine.api;
+﻿using com.dkhalife.apps.redmine.api;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 

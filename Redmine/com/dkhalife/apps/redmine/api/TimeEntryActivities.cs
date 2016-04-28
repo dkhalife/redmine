@@ -1,7 +1,5 @@
 ﻿using com.dkhalife.apps.redmine.core;
-using System;
 using System.Collections.Generic;
-using System.Net;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 

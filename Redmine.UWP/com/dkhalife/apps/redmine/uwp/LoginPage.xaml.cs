@@ -28,11 +28,14 @@ namespace com.dkhalife.apps.redmine.UWP
             AutoLogin.IsEnabled = false;
 
             LoadingRing.IsActive = true;
+
+            var s = Scheme.SelectedValue as ComboBoxItem;
+
             App.Client.Options = new RedmineOptions()
             {
                 Host = Host.Text,
                 Port = int.Parse(Port.Text),
-                Scheme = Scheme.SelectedValue.ToString(),
+                Scheme = s.Content.ToString().ToLower(),
                 Username = Username.Text,
                 Password = Password.Password,
                 ApiKey = ApiKey.Text
