@@ -1,23 +1,34 @@
 ﻿<Page
-    x:Class="com.dkhalife.apps.redmine.UWP.Queries"
+    x:Class="com.dkhalife.apps.redmine.UWP.QueriesPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:com.dkhalife.apps.redmine.UWP"
+    xmlns:r="using:com.dkhalife.apps.redmine"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Pivot>
-            <PivotItem Header="By Project">
-                <ListView>
-                    <ListViewItem>Query 1</ListViewItem>
-                    <ListViewItem>Query 2</ListViewItem>
-                </ListView>
-            </PivotItem>
-            <PivotItem Header="Global">
-                <Grid/>
-            </PivotItem>
+            <PivotItem Header="By Project" />
+            <PivotItem Header="Global" />
         </Pivot>
+
+        <ListView ItemsSource="{x:Bind Path=Queries.Values}">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="r:Query">
+                    <StackPanel>
+                        <TextBlock Text="{x:Bind Path=Name, Mode=OneWay}"/>
+                        <HyperlinkButton Content="" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </StackPanel>
 </Page>

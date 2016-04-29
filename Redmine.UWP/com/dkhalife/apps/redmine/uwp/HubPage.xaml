@@ -263,8 +263,8 @@
 
         <StackPanel Grid.Row="1">
             <StackPanel>
-                <TextBlock>Updating:</TextBlock>
-                <ProgressBar IsIndeterminate="True"></ProgressBar>
+                <!--TextBlock>Updating:</>
+                <ProgressBar IsIndeterminate="True"></ProgressBar-->
 
                 <Frame Name="SubPage" />
             </StackPanel>

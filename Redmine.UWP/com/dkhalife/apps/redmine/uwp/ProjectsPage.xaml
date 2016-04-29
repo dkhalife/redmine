@@ -1,7 +1,8 @@
 ﻿<Page
-    x:Class="com.dkhalife.apps.redmine.UWP.Projects"
+    x:Class="com.dkhalife.apps.redmine.UWP.ProjectsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:r="using:com.dkhalife.apps.redmine"
     xmlns:local="using:com.dkhalife.apps.redmine.UWP"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -9,18 +10,26 @@
 
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Pivot>
-            <PivotItem Header="My Projects">
-                <ListView>
-                    <ListViewItem>Query 1</ListViewItem>
-                    <ListViewItem>Query 2</ListViewItem>
-                </ListView>
-            </PivotItem>
-            <PivotItem Header="Open Projects">
-                <Grid/>
-            </PivotItem>
-            <PivotItem Header="All Projects">
-                <Grid/>
-            </PivotItem>
+            <PivotItem Header="My Projects" />
+            <PivotItem Header="Open Projects" />
+            <PivotItem Header="All Projects" />
         </Pivot>
+        
+        <ListView ItemsSource="{x:Bind Path=Projects.Values}">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="r:Project">
+                    <StackPanel>
+                        <TextBlock Text="{x:Bind Path=Name, Mode=OneWay}"/>
+                        <HyperlinkButton Content="" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </StackPanel>
 </Page>

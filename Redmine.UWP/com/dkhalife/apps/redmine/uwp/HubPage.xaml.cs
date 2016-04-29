@@ -40,17 +40,17 @@ namespace com.dkhalife.apps.redmine.UWP
 
         private void Projects_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            NavigateSubPage(typeof(Projects));
+            NavigateSubPage(typeof(ProjectsPage));
         }
 
         private void Issues_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            NavigateSubPage(typeof(Issues));
+            NavigateSubPage(typeof(IssuesPage));
         }
 
         private void Queries_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            NavigateSubPage(typeof(Queries));
+            NavigateSubPage(typeof(QueriesPage));
         }
 
         private void Users_Tapped(object sender, TappedRoutedEventArgs e)

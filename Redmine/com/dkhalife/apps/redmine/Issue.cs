@@ -42,7 +42,7 @@ namespace com.dkhalife.apps.redmine
         public DateTime DueDate { get; set; }*/
 
         [XmlElement("done_ratio")]
-        public decimal DoneRatio { get; set; }
+        public int DoneRatio { get; set; }
 
         [XmlElement("is_private")]
         public bool IsPrivate { get; set; }
