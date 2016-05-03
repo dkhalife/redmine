@@ -9,7 +9,7 @@ namespace com.dkhalife.apps.redmine.UWP
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    [Page("My Page")]
+    [Page("Issues")]
     public sealed partial class IssuesPage : Page
     {
         private Dictionary<int, Issue> Issues = App.Client.Issues;
@@ -17,6 +17,17 @@ namespace com.dkhalife.apps.redmine.UWP
         public IssuesPage()
         {
             this.InitializeComponent();
+        }
+
+        private void OpenIssue(object sender, SelectionChangedEventArgs e)
+        {
+            ListView list = sender as ListView;
+            Issue i = list.SelectedItem as Issue;
+
+            if (i != null)
+            {
+                Frame.Navigate(typeof(IssuePage), i.Id);
+            }
         }
     }
 }

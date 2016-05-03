@@ -15,7 +15,7 @@
             <PivotItem Header="All Projects" />
         </Pivot>
         
-        <ListView ItemsSource="{x:Bind Path=Projects.Values}">
+        <ListView ItemsSource="{x:Bind Path=Projects.Values}" SelectionChanged="OpenProject">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />

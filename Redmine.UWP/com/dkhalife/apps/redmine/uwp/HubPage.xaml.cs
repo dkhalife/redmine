@@ -1,6 +1,8 @@
 ﻿using com.dkhalife.apps.redmine.UWP.core;
 using System;
 using System.Reflection;
+using Windows.UI.Core;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 
@@ -13,17 +15,41 @@ namespace com.dkhalife.apps.redmine.UWP
     /// </summary>
     public sealed partial class HubPage : Page
     {
-        private string PageTitle = "";
-
+        private SystemNavigationManager Navigation;
         public HubPage()
         {
             this.InitializeComponent();
+            Navigation = SystemNavigationManager.GetForCurrentView();
+            Navigation.BackRequested += Navigation_BackRequested;
             NavigateSubPage(typeof(MyPage));
+        }
+
+        private void Navigation_BackRequested(object sender, BackRequestedEventArgs e)
+        {
+            SubPage.GoBack();
+            PageTitle.Text = SubPage.Content.GetType().GetTypeInfo().GetCustomAttribute<PageAttribute>().Title;
+
+            if (!SubPage.CanGoBack)
+            {
+                Navigation.AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
+            }
         }
 
         private void NavigateSubPage(Type page)
         {
-            PageTitle = page.GetTypeInfo().GetCustomAttribute<PageAttribute>().Title;
+            PageTitle.Text = page.GetTypeInfo().GetCustomAttribute<PageAttribute>().Title;
+
+            if (page == typeof(MyPage))
+            {
+                MyPageButton.Visibility = Visibility.Collapsed;
+                Navigation.AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
+            }
+            else
+            {
+                MyPageButton.Visibility = Visibility.Visible;
+                Navigation.AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
+            }
+            
             SubPage.Navigate(page);
             Menu.IsPaneOpen = false;
         }
@@ -65,6 +91,8 @@ namespace com.dkhalife.apps.redmine.UWP
 
         private async void Feedback_Tapped(object sender, TappedRoutedEventArgs e)
         {
+            Menu.IsPaneOpen = false;
+
             bool success = await Windows.System.Launcher.LaunchUriAsync(new Uri(@"windows-feedback://"));
 
             if (!success)

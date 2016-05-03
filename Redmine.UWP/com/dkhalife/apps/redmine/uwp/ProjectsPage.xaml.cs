@@ -18,5 +18,16 @@ namespace com.dkhalife.apps.redmine.UWP
         {
             this.InitializeComponent();
         }
+        
+        private void OpenProject(object sender, SelectionChangedEventArgs e)
+        {
+            ListView list = sender as ListView;
+            Project p = list.SelectedItem as Project;
+
+            if (p != null)
+            {
+                Frame.Navigate(typeof(ProjectPage), p.Id);
+            }
+        }
     }
 }

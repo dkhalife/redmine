@@ -9,7 +9,7 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <ListView ItemsSource="{x:Bind Path=Issues.Values}">
+        <ListView ItemsSource="{x:Bind Path=Issues.Values}" SelectionChanged="OpenIssue">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />

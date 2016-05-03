@@ -104,6 +104,9 @@
     <Compile Include="com\dkhalife\apps\redmine\uwp\HubPage.xaml.cs">
       <DependentUpon>HubPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="com\dkhalife\apps\redmine\uwp\IssuePage.xaml.cs">
+      <DependentUpon>IssuePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="com\dkhalife\apps\redmine\uwp\IssuesPage.xaml.cs">
       <DependentUpon>IssuesPage.xaml</DependentUpon>
     </Compile>
@@ -117,6 +120,9 @@
       <DependentUpon>MyPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="com\dkhalife\apps\redmine\uwp\PageAttribute.cs" />
+    <Compile Include="com\dkhalife\apps\redmine\uwp\ProjectPage.xaml.cs">
+      <DependentUpon>ProjectPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="com\dkhalife\apps\redmine\uwp\ProjectsPage.xaml.cs">
       <DependentUpon>ProjectsPage.xaml</DependentUpon>
     </Compile>
@@ -163,6 +169,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="com\dkhalife\apps\redmine\uwp\IssuePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="com\dkhalife\apps\redmine\uwp\IssuesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -176,6 +186,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="com\dkhalife\apps\redmine\uwp\MyPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="com\dkhalife\apps\redmine\uwp\ProjectPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
