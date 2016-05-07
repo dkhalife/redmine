@@ -12,27 +12,8 @@
             <Image Source="Assets/RedmineLogo.png" VerticalAlignment="Top" Margin="0,50,0,30" />
 
             <StackPanel Orientation="Vertical">
-                <!--TextBlock Margin="0,0,0,5">Profile:</>
-                <ComboBox Name="Profile" Width="200" SelectionChanged="Profile_SelectionChanged" PlaceholderText="Add a new profile">
-                    <ComboBoxItem></ComboBoxItem>
-                </ComboBox-->
-
                 <TextBlock Margin="0,20,0,5">Host:</TextBlock>
                 <TextBox Name="Host" PlaceholderText="redmine.example.com"></TextBox>
-
-                <Grid>
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Margin="0,20,0,5">Scheme:</TextBlock>
-                        <ComboBox Name="Scheme" Width="100">
-                            <ComboBoxItem IsSelected="True">HTTP</ComboBoxItem>
-                            <ComboBoxItem>HTTPS</ComboBoxItem>
-                        </ComboBox>
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Right">
-                        <TextBlock Margin="0,20,0,5">Port:</TextBlock>
-                        <TextBox Name="Port" Width="100" HorizontalAlignment="Left" PlaceholderText="80"></TextBox>
-                    </StackPanel>
-                </Grid>
             
                 <TextBlock Margin="0,20,0,5">Authenticate using:</TextBlock>
                 <Pivot Padding="-10,0,0,0" Margin="0,0,-20,0">

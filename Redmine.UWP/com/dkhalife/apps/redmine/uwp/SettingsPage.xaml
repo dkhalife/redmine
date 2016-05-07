@@ -7,43 +7,55 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock Text="Scheme" />
-        <ComboBox Name="Scheme">
-            <ComboBoxItem IsSelected="True">HTTP</ComboBoxItem>
-            <ComboBoxItem>HTTPS</ComboBoxItem>
-        </ComboBox>
-        
-        <TextBlock Text="Server" />
-        <TextBox Name="Host" Text="{x:Bind Path=Server.Host, Mode=TwoWay}"/>
+    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Padding="20">
+        <StackPanel Orientation="Vertical">
+            <TextBlock Margin="0,20,0,5">Host:</TextBlock>
+            <TextBox Name="Host" PlaceholderText="https://redmine.example.com"></TextBox>
 
-        <TextBlock Text="Port" />
-        <TextBox Name="Port" Text="{x:Bind Path=Server.Port, Mode=TwoWay}"/>
+            <TextBlock Margin="0,20,0,5">Authenticate using:</TextBlock>
+            <Pivot Padding="-10,0,0,0" Margin="0,0,-20,0">
+                <PivotItem Header="Account">
+                    <StackPanel>
+                        <TextBlock Margin="0,20,0,5">Username:</TextBlock>
+                        <TextBox Name="Username" PlaceholderText="domain\username"></TextBox>
 
-        <TextBlock Text="Username" />
-        <TextBox Name="Username" Text="{x:Bind Path=Server.Username, Mode=TwoWay}"/>
+                        <TextBlock Margin="0,20,0,5">Password:</TextBlock>
+                        <PasswordBox Name="Password" PlaceholderText=""></PasswordBox>
+                    </StackPanel>
+                </PivotItem>
+                <PivotItem Header="API Key">
+                    <StackPanel>
+                        <TextBlock Margin="0,20,0,5">API Key:</TextBlock>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition Width="40"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBox Name="ApiKey"></TextBox>
+                            <Button Grid.Column="1" FontFamily="Segoe MDL2 Assets" Content="&#xE82F;" BorderThickness="0,2,2,2" BorderBrush="Gray" Background="Yellow" Height="32" />
+                        </Grid>
+                    </StackPanel>
+                </PivotItem>
+            </Pivot>
 
-        <TextBlock Text="Password" />
-        <PasswordBox Name="Password"/>
+            <TextBlock Margin="0,20,0,5" Text="Issues Update Frequency" />
+            <TextBox Name="UpdateFrequency" Text="{x:Bind Path=Server.UpdateFrequency}" />
 
-        <TextBlock Text="Api Key" />
-        <TextBox Name="ApiKey"/>
+            <TextBlock Margin="0,20,0,5" Text="Projects Update Frequency" />
+            <TextBox Name="ProjectsUpdateFrequency" Text="{x:Bind Path=Server.ProjectsUpdateFrequency}" />
 
-        <TextBlock Text="Theme" />
-        <ComboBox Name="Theme">
-            <ComboBoxItem IsSelected="True">Redmine</ComboBoxItem>
-            <ComboBoxItem>Light</ComboBoxItem>
-            <ComboBoxItem>Dark</ComboBoxItem>
-            <ComboBoxItem>Same as System</ComboBoxItem>
-        </ComboBox>
+            <TextBlock Margin="0,20,0,5" Text="Meta Update Frequency" />
+            <TextBox Name="EnumerationsUpdateFrequency" Text="{x:Bind Path=Server.EnumerationsUpdateFrequency}" />
 
-        <TextBlock Text="Issues Update Frequency" />
-        <TextBox Name="UpdateFrequency" Text="{x:Bind Path=Server.UpdateFrequency}" />
-
-        <TextBlock Text="Projects Update Frequency" />
-        <TextBox Name="ProjectsUpdateFrequency" Text="{x:Bind Path=Server.ProjectsUpdateFrequency}" />
-
-        <TextBlock Text="Meta Update Frequency" />
-        <TextBox Name="EnumerationsUpdateFrequency" Text="{x:Bind Path=Server.EnumerationsUpdateFrequency}" />
+            <TextBlock Margin="0,20,0,5" Text="Theme" />
+            <ComboBox Name="Theme">
+                <ComboBoxItem IsSelected="True">Redmine</ComboBoxItem>
+                <ComboBoxItem>Light</ComboBoxItem>
+                <ComboBoxItem>Dark</ComboBoxItem>
+                <ComboBoxItem>Same as System</ComboBoxItem>
+            </ComboBox>
+            
+            <CheckBox Name="AutoLogin" Margin="0,20,0,0" IsChecked="True">Enable automatic login</CheckBox>
+        </StackPanel>
     </StackPanel>
 </Page>

@@ -19,8 +19,6 @@ namespace com.dkhalife.apps.redmine.UWP
         private async void Login_Tapped(object sender, TappedRoutedEventArgs e)
         {
             Host.IsEnabled = false;
-            Port.IsEnabled = false;
-            Scheme.IsEnabled = false;
             Username.IsEnabled = false;
             Password.IsEnabled = false;
             ApiKey.IsEnabled = false;
@@ -29,13 +27,11 @@ namespace com.dkhalife.apps.redmine.UWP
 
             LoadingRing.IsActive = true;
 
-            var s = Scheme.SelectedValue as ComboBoxItem;
+            // TODO: Add try parse for uri
 
             App.Client.Options = new RedmineOptions()
             {
-                Host = Host.Text,
-                Port = int.Parse(Port.Text),
-                Scheme = s.Content.ToString().ToLower(),
+                Host = new Uri(Host.Text),
                 Username = Username.Text,
                 Password = Password.Password,
                 ApiKey = ApiKey.Text
@@ -52,19 +48,12 @@ namespace com.dkhalife.apps.redmine.UWP
                 LoadingRing.IsActive = false;
 
                 Host.IsEnabled = true;
-                Port.IsEnabled = true;
-                Scheme.IsEnabled = true;
                 Username.IsEnabled = true;
                 Password.IsEnabled = true;
                 ApiKey.IsEnabled = true;
                 Login.IsEnabled = true;
                 AutoLogin.IsEnabled = true;
             }
-        }
-
-        private void Profile_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            // TODO: Update profile fields
         }
     }
 }

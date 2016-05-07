@@ -57,7 +57,8 @@ namespace com.dkhalife.apps.redmine
         #region API Core
         internal WebRequest CreateRequest(string path, string query = "")
         {
-            UriBuilder uri = new UriBuilder(Options.Scheme, Options.Host, Options.Port, path, query);
+            Uri host = Options.Host;
+            UriBuilder uri = new UriBuilder(host.Scheme, host.Host, host.Port, path, query);
             HttpWebRequest wr = HttpWebRequest.CreateHttp(uri.ToString());
             wr.Credentials = (!string.IsNullOrEmpty(Options.ApiKey)) ? new NetworkCredential(Options.ApiKey, "") : new NetworkCredential(Options.Username, Options.Password);
 

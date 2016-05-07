@@ -16,6 +16,8 @@ namespace com.dkhalife.apps.redmine.UWP
         public Settings()
         {
             this.InitializeComponent();
+
+            // TODO: Auto update on change
         }
     }
 }
