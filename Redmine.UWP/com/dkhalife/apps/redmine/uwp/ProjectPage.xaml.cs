@@ -1,7 +1,4 @@
 ﻿using com.dkhalife.apps.redmine.api;
-using com.dkhalife.apps.redmine.UWP;
-using System;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Redmine.com.dkhalife.apps.redmine.core
+namespace com.dkhalife.apps.redmine.core
 {
     public class Progress
     {

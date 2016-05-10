@@ -1,5 +1,4 @@
 ﻿using com.dkhalife.apps.redmine.core;
-using Redmine.com.dkhalife.apps.redmine.core;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Xml.Serialization;

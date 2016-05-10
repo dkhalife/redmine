@@ -1,11 +1,9 @@
 ﻿using com.dkhalife.apps.redmine.api;
-using com.dkhalife.apps.redmine.core;
 using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
-using System.Xml.Serialization;
 
 namespace com.dkhalife.apps.redmine
 {
