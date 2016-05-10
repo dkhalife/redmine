@@ -13,7 +13,7 @@
 
             <StackPanel Orientation="Vertical">
                 <TextBlock Margin="0,20,0,5">Host:</TextBlock>
-                <TextBox Name="Host" PlaceholderText="redmine.example.com"></TextBox>
+                <TextBox Name="Host" PlaceholderText="https://redmine.example.com"></TextBox>
             
                 <TextBlock Margin="0,20,0,5">Authenticate using:</TextBlock>
                 <Pivot Padding="-10,0,0,0" Margin="0,0,-20,0">
@@ -40,8 +40,6 @@
                         </StackPanel>
                     </PivotItem>
                 </Pivot>
-
-                <CheckBox Name="AutoLogin" Margin="0,20,0,0" IsChecked="True"> Enable automatic login</CheckBox>
             
                 <StackPanel Margin="0,30,0,0" Orientation="Horizontal">
                     <Button Name="Login" Tapped="Login_Tapped">Login</Button>

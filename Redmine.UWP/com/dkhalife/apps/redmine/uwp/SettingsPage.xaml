@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="com.dkhalife.apps.redmine.UWP.Settings"
+    x:Class="com.dkhalife.apps.redmine.UWP.SettingsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:com.dkhalife.apps.redmine.UWP"
@@ -10,35 +10,39 @@
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Padding="20">
         <StackPanel Orientation="Vertical">
             <TextBlock Margin="0,20,0,5">Host:</TextBlock>
-            <TextBox Name="Host" PlaceholderText="https://redmine.example.com"></TextBox>
+            <TextBox Name="Host" PlaceholderText="https://redmine.example.com" Text="{x:Bind Server.Host}" TextChanged="SettingChanged" />
 
             <TextBlock Margin="0,20,0,5">Authenticate using:</TextBlock>
-            <Pivot Padding="-10,0,0,0" Margin="0,0,-20,0">
+            <Pivot Padding="-10,0,0,0" Margin="0,0,-20,0" Name="AuthenticationMethod" SelectionChanged="AuthenticationMethodChanged">
                 <PivotItem Header="Account">
                     <StackPanel>
                         <TextBlock Margin="0,20,0,5">Username:</TextBlock>
-                        <TextBox Name="Username" PlaceholderText="domain\username"></TextBox>
+                        <TextBox Name="Username" PlaceholderText="domain\username" Text="{x:Bind Server.Username}" TextChanged="SettingChanged" />
 
                         <TextBlock Margin="0,20,0,5">Password:</TextBlock>
-                        <PasswordBox Name="Password" PlaceholderText=""></PasswordBox>
+                        <PasswordBox Name="Password" PlaceholderText="" Password="{x:Bind Server.Password}" PasswordChanged="PasswordChanged" />
                     </StackPanel>
                 </PivotItem>
                 <PivotItem Header="API Key">
                     <StackPanel>
                         <TextBlock Margin="0,20,0,5">API Key:</TextBlock>
-                        <Grid>
+                        <Grid Margin="0,0,-10,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition></ColumnDefinition>
                                 <ColumnDefinition Width="40"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <TextBox Name="ApiKey"></TextBox>
+                            <TextBox Name="ApiKey" Text="{x:Bind Server.ApiKey}" TextChanged="SettingChanged" />
                             <Button Grid.Column="1" FontFamily="Segoe MDL2 Assets" Content="&#xE82F;" BorderThickness="0,2,2,2" BorderBrush="Gray" Background="Yellow" Height="32" />
                         </Grid>
                     </StackPanel>
                 </PivotItem>
             </Pivot>
 
-            <TextBlock Margin="0,20,0,5" Text="Issues Update Frequency" />
+            <Button Margin="0,20,0,5" Content="Test configuration" Tapped="TestConfiguration" />
+
+            <TextBlock Name="TestOutcome" />
+
+            <!--TextBlock Margin="0,20,0,5" Text="Issues Update Frequency" />
             <TextBox Name="UpdateFrequency" Text="{x:Bind Path=Server.UpdateFrequency}" />
 
             <TextBlock Margin="0,20,0,5" Text="Projects Update Frequency" />
@@ -53,9 +57,7 @@
                 <ComboBoxItem>Light</ComboBoxItem>
                 <ComboBoxItem>Dark</ComboBoxItem>
                 <ComboBoxItem>Same as System</ComboBoxItem>
-            </ComboBox>
-            
-            <CheckBox Name="AutoLogin" Margin="0,20,0,0" IsChecked="True">Enable automatic login</CheckBox>
+            </ComboBox-->
         </StackPanel>
     </StackPanel>
 </Page>

@@ -25,6 +25,9 @@ namespace com.dkhalife.apps.redmine.api
             {
                 result = await RedmineApi.GetPaginatedList<TimeEntries>(result);
 
+                if (result == null)
+                    return false;
+
                 foreach (TimeEntry e in result.Items)
                 {
                     timeEntries.Add(e.Id, e);

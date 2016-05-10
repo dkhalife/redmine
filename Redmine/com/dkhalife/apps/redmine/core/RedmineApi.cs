@@ -17,10 +17,23 @@ namespace com.dkhalife.apps.redmine.core
 
         public string Path { get; set; }
 
+        public delegate void OnApiFailureEventHandler(Exception e);
+
+        public static event OnApiFailureEventHandler ApiFailed;
+
         private static void handleExceptions(Exception e)
         {
-            // TODO: well implement it
-            throw new NotImplementedException();
+            if(ApiFailed == null)
+            {
+#if DEBUG
+                throw e;
+#else
+                // TODO: Add logging here
+                return;
+#endif
+            }
+
+            ApiFailed(e);
         }
 
         public static async Task<T> GetSingle<T>(int id)

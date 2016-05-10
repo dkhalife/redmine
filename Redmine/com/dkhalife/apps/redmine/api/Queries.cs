@@ -25,6 +25,9 @@ namespace com.dkhalife.apps.redmine.api
             {
                 result = await RedmineApi.GetPaginatedList<Queries>(result);
 
+                if (result == null)
+                    return false;
+
                 foreach (Query q in result.Items)
                 {
                     queries.Add(q.Id, q);

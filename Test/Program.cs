@@ -10,8 +10,8 @@ namespace Test
         static void Main(string[] args)
         {
             RedmineClient r = RedmineClient.Instance;
-            r.Options.Host = new Uri("https://redmine.dkhalife.com");
-            r.Options.ApiKey = "5bb2e06578c278195aab8a8be02d80dc6ca1df04";
+            r.Settings.Host = new Uri("https://redmine.dkhalife.com");
+            r.Settings.ApiKey = "5bb2e06578c278195aab8a8be02d80dc6ca1df04";
 
             // TODO: Load the last updated
 

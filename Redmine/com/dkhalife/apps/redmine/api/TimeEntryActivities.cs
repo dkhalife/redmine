@@ -16,6 +16,9 @@ namespace com.dkhalife.apps.redmine.api
         {
             TimeEntryActivities result = await RedmineApi.GetList<TimeEntryActivities>();
 
+            if (result == null)
+                return false;
+
             activities.Clear();
             foreach (TimeEntryActivity e in result.Items)
             {

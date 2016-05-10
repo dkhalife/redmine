@@ -30,6 +30,9 @@ namespace com.dkhalife.apps.redmine.api
             {
                 result = await RedmineApi.GetPaginatedList<Projects>(result);
 
+                if (result == null)
+                    return false;
+
                 foreach (Project p in result.Items)
                 {
                     projects.Add(p.Id, p);

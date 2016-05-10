@@ -15,7 +15,15 @@ namespace com.dkhalife.apps.redmine
         public string FirstName { get; set; }
 
         [XmlElement("lastname")]
-        public string LastName{ get; set; }
+        public string LastName { get; set; }
+
+        [XmlIgnore]
+        public string FullName {
+            get
+            {
+                return FirstName + " " + LastName;
+            }
+        }
 
         [XmlElement("mail")]
         public string Email { get; set; }

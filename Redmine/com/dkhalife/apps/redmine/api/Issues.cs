@@ -31,6 +31,9 @@ namespace com.dkhalife.apps.redmine.api
             do
             {
                 result = await RedmineApi.GetPaginatedList<Issues>(result, $"updated_on=%3E%3D{since}");
+
+                if (result == null)
+                    return false;
                 
                 foreach (Issue i in result.Items)
                 {

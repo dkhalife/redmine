@@ -18,20 +18,24 @@ namespace com.dkhalife.apps.redmine.UWP
 
         private async void Login_Tapped(object sender, TappedRoutedEventArgs e)
         {
+            Uri host;
+            if(!Uri.TryCreate(Host.Text, UriKind.Absolute, out host))
+            {
+                
+                //return;
+            }
+
             Host.IsEnabled = false;
             Username.IsEnabled = false;
             Password.IsEnabled = false;
             ApiKey.IsEnabled = false;
             Login.IsEnabled = false;
-            AutoLogin.IsEnabled = false;
 
             LoadingRing.IsActive = true;
 
-            // TODO: Add try parse for uri
-
-            App.Client.Options = new RedmineOptions()
+            App.Client.Settings = new RedmineSettings()
             {
-                Host = new Uri(Host.Text),
+                Host = host,
                 Username = Username.Text,
                 Password = Password.Password,
                 ApiKey = ApiKey.Text
@@ -52,7 +56,6 @@ namespace com.dkhalife.apps.redmine.UWP
                 Password.IsEnabled = true;
                 ApiKey.IsEnabled = true;
                 Login.IsEnabled = true;
-                AutoLogin.IsEnabled = true;
             }
         }
     }

@@ -16,6 +16,9 @@ namespace com.dkhalife.apps.redmine.api
         {
             Trackers result = await RedmineApi.GetList<Trackers>();
 
+            if (result == null)
+                return false;
+
             trackers.Clear();
             foreach (Tracker t in result.Items)
             {

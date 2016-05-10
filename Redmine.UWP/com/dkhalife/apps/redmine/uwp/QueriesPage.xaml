@@ -25,7 +25,6 @@
                 <DataTemplate x:DataType="r:Query">
                     <StackPanel>
                         <TextBlock Text="{x:Bind Path=Name, Mode=OneWay}"/>
-                        <HyperlinkButton Content="" />
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

@@ -1,8 +1,11 @@
 ﻿using com.dkhalife.apps.redmine.api;
+using com.dkhalife.apps.redmine.core;
 using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Runtime.Serialization;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace com.dkhalife.apps.redmine
 {
@@ -34,7 +37,7 @@ namespace com.dkhalife.apps.redmine
         #region Configuration
         public bool IsReady { get; private set; } = false;
 
-        public RedmineOptions Options { get; set; } = new RedmineOptions();
+        public RedmineSettings Settings { get; set; } = null;
 
         public async Task<Boolean> TestConfiguration()
         {
@@ -43,24 +46,33 @@ namespace com.dkhalife.apps.redmine
         #endregion
 
         #region Redmine Properties
+        [DataMember]
         public Dictionary<int, TimeEntryActivity> TimeEntryActivities { get; internal set; } = new Dictionary<int, TimeEntryActivity>();
+        [DataMember]
         public Dictionary<int, IssuePriority> IssuePriorities { get; internal set; } = new Dictionary<int, IssuePriority>();
+        [DataMember]
         public Dictionary<int, IssueStatus> IssueStatuses { get; internal set; } = new Dictionary<int, IssueStatus>();
+        [DataMember]
         public Dictionary<int, Tracker> Trackers { get; internal set; } = new Dictionary<int, Tracker>();
+        [DataMember]
         public Dictionary<int, Project> Projects { get; internal set; } = new Dictionary<int, Project>();
+        [DataMember]
         public Dictionary<int, Issue> Issues { get; internal set; } = new Dictionary<int, Issue>();
+        [DataMember]
         public Dictionary<int, Query> Queries { get; internal set; } = new Dictionary<int, Query>();
+        [DataMember]
         public Dictionary<int, TimeEntry> TimeEntries { get; internal set; } = new Dictionary<int, TimeEntry>();
+        [DataMember]
         public Dictionary<int, User> Users { get; internal set; } = new Dictionary<int, User>();
         #endregion
 
         #region API Core
         internal WebRequest CreateRequest(string path, string query = "")
         {
-            Uri host = Options.Host;
+            Uri host = Settings.Host;
             UriBuilder uri = new UriBuilder(host.Scheme, host.Host, host.Port, path, query);
             HttpWebRequest wr = HttpWebRequest.CreateHttp(uri.ToString());
-            wr.Credentials = (!string.IsNullOrEmpty(Options.ApiKey)) ? new NetworkCredential(Options.ApiKey, "") : new NetworkCredential(Options.Username, Options.Password);
+            wr.Credentials = (!string.IsNullOrEmpty(Settings.ApiKey)) ? new NetworkCredential(Settings.ApiKey, "") : new NetworkCredential(Settings.Username, Settings.Password);
 
             return wr;
         }
@@ -152,7 +164,7 @@ namespace com.dkhalife.apps.redmine
         {
             bool globalSuccess = true;
 
-            if (ForceUpdate || LastEnumerationsUpdate < DateTime.Now.Subtract(Options.EnumerationsUpdateFrequency))
+            if (ForceUpdate || LastEnumerationsUpdate < DateTime.Now.Subtract(Settings.EnumerationsUpdateFrequency))
             {
                 bool enumerationSuccess = true;
 
@@ -167,7 +179,7 @@ namespace com.dkhalife.apps.redmine
                     LastEnumerationsUpdate = DateTime.Now;
             }
 
-            if (ForceUpdate || LastProjectsUpdate < DateTime.Now.Subtract(Options.ProjectsUpdateFrequency))
+            if (ForceUpdate || LastProjectsUpdate < DateTime.Now.Subtract(Settings.ProjectsUpdateFrequency))
             {
                 bool projectsSuccess = true;
 
@@ -181,7 +193,7 @@ namespace com.dkhalife.apps.redmine
                     LastProjectsUpdate = DateTime.Now;
             }
 
-            if (ForceUpdate || LastIssuesUpdate < DateTime.Now.Subtract(Options.UpdateFrequency))
+            if (ForceUpdate || LastIssuesUpdate < DateTime.Now.Subtract(Settings.UpdateFrequency))
             {
                 bool issuesSuccess = true;
 

@@ -16,6 +16,9 @@ namespace com.dkhalife.apps.redmine.api
         {
             IssuePriorities result = await RedmineApi.GetList<IssuePriorities>();
 
+            if (result == null)
+                return false;
+
             priorities.Clear();
             foreach (IssuePriority p in result.Items)
             {

@@ -1,4 +1,5 @@
-﻿using Windows.UI.Xaml.Controls;
+﻿using Windows.Storage;
+using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -17,6 +18,8 @@ namespace com.dkhalife.apps.redmine.UWP
         
         private void GetStarted_Tapped(object sender, TappedRoutedEventArgs e)
         {
+            ApplicationData.Current.LocalSettings.Values["FirstRun"] = false;
+
             this.Frame.Navigate(typeof(LoginPage));
         }
     }

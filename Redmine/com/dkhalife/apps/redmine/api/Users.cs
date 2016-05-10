@@ -30,6 +30,9 @@ namespace com.dkhalife.apps.redmine.api
             {
                 result = await RedmineApi.GetPaginatedList<Users>(result);
 
+                if (result == null)
+                    return false;
+
                 foreach (User u in result.Items)
                 {
                     users.Add(u.Id, u);

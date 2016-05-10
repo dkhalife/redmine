@@ -16,6 +16,9 @@ namespace com.dkhalife.apps.redmine.api
         {
             IssueStatuses result = await RedmineApi.GetList<IssueStatuses>();
 
+            if (result == null)
+                return false;
+
             statuses.Clear();
             foreach (IssueStatus s in result.Items)
             {

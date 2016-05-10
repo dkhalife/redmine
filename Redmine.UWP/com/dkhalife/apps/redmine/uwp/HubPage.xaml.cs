@@ -81,12 +81,12 @@ namespace com.dkhalife.apps.redmine.UWP
 
         private void Users_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            NavigateSubPage(typeof(Users));
+            NavigateSubPage(typeof(UsersPage));
         }
 
         private void Settings_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            NavigateSubPage(typeof(Settings));
+            NavigateSubPage(typeof(SettingsPage));
         }
 
         private async void Feedback_Tapped(object sender, TappedRoutedEventArgs e)
