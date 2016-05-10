@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -6,7 +7,6 @@ using System.Reflection;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.Threading.Tasks;
-using System.Xml.Serialization;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Security.Credentials;
@@ -131,21 +131,26 @@ namespace com.dkhalife.apps.redmine.UWP
 
             try
             {
+                DataContractJsonSerializerSettings settings = new DataContractJsonSerializerSettings()
+                {
+                    UseSimpleDictionaryFormat = true
+                };
+
                 // Save server data
-                IEnumerable<PropertyInfo> props = Client.GetType().GetProperties().Where(prop => prop.IsDefined(typeof(XmlElementAttribute), false));
+                IEnumerable<PropertyInfo> props = Client.GetType().GetProperties().Where(prop => prop.IsDefined(typeof(DataMemberAttribute), false));
                 foreach (PropertyInfo pi in props)
                 {
                     file = await ApplicationData.Current.LocalFolder.CreateFileAsync($"{pi.Name}.json", CreationCollisionOption.ReplaceExisting);
                     using (Stream outStream = await file.OpenStreamForWriteAsync())
                     {
-                        DataContractJsonSerializer json = new DataContractJsonSerializer(pi.PropertyType);
+                        DataContractJsonSerializer json = new DataContractJsonSerializer(pi.PropertyType, settings);
                         json.WriteObject(outStream, pi.GetValue(Client));
                     }
                 }
 
                 return true;
             }
-            catch(Exception e)
+            catch
             {
                 return false;
             }
@@ -166,7 +171,6 @@ namespace com.dkhalife.apps.redmine.UWP
             IStorageItem file = await ApplicationData.Current.LocalFolder.TryGetItemAsync("settings.json");
             if (file != null)
             {
-
                 try
                 {
                     using (Stream inStream = await ((StorageFile)file).OpenStreamForReadAsync())
@@ -200,28 +204,28 @@ namespace com.dkhalife.apps.redmine.UWP
                 // Load server data
                 if (Client.Settings != null)
                 {
+                    DataContractJsonSerializerSettings settings = new DataContractJsonSerializerSettings()
+                    {
+                        UseSimpleDictionaryFormat = true
+                    };
                     IEnumerable<PropertyInfo> props = Client.GetType().GetProperties().Where(prop => prop.IsDefined(typeof(DataMemberAttribute), false));
                     foreach (PropertyInfo pi in props)
                     {
-                        IStorageItem dataFile = await ApplicationData.Current.LocalFolder.TryGetItemAsync($"{pi.Name}.json");
-                        if (dataFile != null)
+                        file = await ApplicationData.Current.LocalFolder.TryGetItemAsync($"{pi.Name}.json");
+                        if (file != null)
                         {
                             try
                             {
                                 using (Stream inStream = await ((StorageFile)file).OpenStreamForReadAsync())
                                 {
-                                    DataContractJsonSerializerSettings settings = new DataContractJsonSerializerSettings()
-                                    {
-                                        UseSimpleDictionaryFormat = true
-                                    };
                                     DataContractJsonSerializer json = new DataContractJsonSerializer(pi.PropertyType, settings);
                                     pi.SetValue(Client, json.ReadObject(inStream));
                                 }
                             }
-                            catch (Exception e)
+                            catch 
                             {
                                 // Corrupted file, remove it
-                                //await dataFile.DeleteAsync();
+                                await file.DeleteAsync();
                             }
                         }
                     }

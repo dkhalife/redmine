@@ -47,7 +47,6 @@
     <Compile Include="com\dkhalife\apps\redmine\api\Users.cs" />
     <Compile Include="com\dkhalife\apps\redmine\core\Progress.cs" />
     <Compile Include="com\dkhalife\apps\redmine\core\RedmineApi.cs" />
-    <Compile Include="com\dkhalife\apps\redmine\core\SerializableDictionary.cs" />
     <Compile Include="com\dkhalife\apps\redmine\RedmineSettings.cs" />
     <Compile Include="com\dkhalife\apps\redmine\TimeEntryActivity.cs" />
     <Compile Include="com\dkhalife\apps\redmine\Issue.cs" />

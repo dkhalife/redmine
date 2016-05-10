@@ -1,6 +1,7 @@
 ﻿using com.dkhalife.apps.redmine.UWP.core;
 using System.Collections.Generic;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -19,7 +20,7 @@ namespace com.dkhalife.apps.redmine.UWP
             this.InitializeComponent();
         }
 
-        private void OpenContactCard(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        private void OpenContactCard(object sender, TappedRoutedEventArgs e)
         {
 
         }
