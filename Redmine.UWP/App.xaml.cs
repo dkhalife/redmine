@@ -106,7 +106,7 @@ namespace com.dkhalife.apps.redmine.UWP
 
         internal static RedmineClient Client { get; private set; } = RedmineClient.Instance;
 
-        private async Task<bool> SaveAsync()
+        public async Task<bool> SaveAsync()
         {
             // Save server settings
             StorageFile file = await ApplicationData.Current.LocalFolder.CreateFileAsync("settings.json", CreationCollisionOption.ReplaceExisting);
@@ -118,7 +118,6 @@ namespace com.dkhalife.apps.redmine.UWP
 
             // Save credentials
             PasswordVault vault = new PasswordVault();
-
             if (string.IsNullOrEmpty(Client.Settings.Username))
             {
                 vault.Add(new PasswordCredential("Redmine", "ApiKey", Client.Settings.ApiKey));
@@ -151,6 +150,7 @@ namespace com.dkhalife.apps.redmine.UWP
             }
             catch
             {
+                // TODO: Feedback
                 return false;
             }
         }
@@ -197,7 +197,7 @@ namespace com.dkhalife.apps.redmine.UWP
                 }
                 catch
                 {
-                    // TODO: What can be done to prevent this
+                    // TODO: Feedback
                 }
 
                 // Load server data

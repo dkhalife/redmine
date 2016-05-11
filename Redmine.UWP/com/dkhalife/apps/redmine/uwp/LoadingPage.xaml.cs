@@ -25,6 +25,7 @@ namespace com.dkhalife.apps.redmine.UWP
             api.Users.Progress.Updating += Users_Updating;
 
             await App.Client.SynchronizeAsync();
+            await ((App) App.Current).SaveAsync();
 
             Frame.Navigate(typeof(HubPage));
         }

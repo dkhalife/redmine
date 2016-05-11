@@ -35,7 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="com\dkhalife\apps\redmine\api\ErrorList.cs" />
     <Compile Include="com\dkhalife\apps\redmine\api\Issues.cs" />
     <Compile Include="com\dkhalife\apps\redmine\api\Projects.cs" />
     <Compile Include="com\dkhalife\apps\redmine\api\Queries.cs" />

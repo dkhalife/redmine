@@ -23,9 +23,7 @@
 
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="r:Query">
-                    <StackPanel>
-                        <TextBlock Text="{x:Bind Path=Name, Mode=OneWay}"/>
-                    </StackPanel>
+                    <TextBlock Text="{x:Bind Path=Name, Mode=OneWay}"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

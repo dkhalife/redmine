@@ -21,7 +21,7 @@ namespace com.dkhalife.apps.redmine.UWP
             Uri host;
             if(!Uri.TryCreate(Host.Text, UriKind.Absolute, out host))
             {
-                
+                // TODO: Feedback error
                 //return;
             }
 

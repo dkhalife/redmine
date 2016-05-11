@@ -12,7 +12,7 @@
             <PivotItem Header="By Date">
                 <Grid>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock VerticalAlignment="Center" Margin="0,0,20,0">Pick a date: </TextBlock>
+                        <TextBlock VerticalAlignment="Center" Margin="0,0,20,0">Pick a date:</TextBlock>
                         <CalendarDatePicker></CalendarDatePicker>
                     </StackPanel>
                 </Grid>
@@ -24,7 +24,5 @@
                 <Grid/>
             </PivotItem>
         </Pivot>
-
-
     </StackPanel>
 </Page>

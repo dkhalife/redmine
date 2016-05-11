@@ -93,11 +93,12 @@ namespace com.dkhalife.apps.redmine.UWP
         {
             Menu.IsPaneOpen = false;
 
+            // TODO: Figure out how to attach my app ID
             bool success = await Windows.System.Launcher.LaunchUriAsync(new Uri(@"windows-feedback://"));
 
             if (!success)
             {
-                // URI launched
+                // TODO: Feedback
                 throw new InvalidOperationException();
             }
         }
