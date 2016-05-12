@@ -18,5 +18,15 @@ namespace com.dkhalife.apps.redmine.UWP
         {
             this.InitializeComponent();
         }
+
+        private void OpenIssuesForQuery(object sender, SelectionChangedEventArgs e)
+        {
+            Query query = (QueriesList.SelectedItem) as Query;
+            if (query == null) {
+                return;
+            }
+
+            // TODO: Link to issues page
+        }
     }
 }

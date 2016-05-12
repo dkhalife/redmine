@@ -14,7 +14,7 @@
             <PivotItem Header="Global" />
         </Pivot>
 
-        <ListView ItemsSource="{x:Bind Path=Queries.Values}">
+        <ListView ItemsSource="{x:Bind Path=Queries.Values}" Name="QueriesList" SelectionChanged="OpenIssuesForQuery">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />

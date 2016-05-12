@@ -25,10 +25,9 @@ namespace com.dkhalife.apps.redmine.UWP
 
         private void OpenContactCard(object sender, TappedRoutedEventArgs e)
         {
-            User user = Contacts.SelectedItem as User;
+            User user = UsersList.SelectedItem as User;
             if(user == null)
             {
-                // TODO: Log 
                 return;
             }
 
@@ -52,7 +51,11 @@ namespace com.dkhalife.apps.redmine.UWP
 
         private void OpenIssuesForUser(object sender, SelectionChangedEventArgs e)
         {
-            User user = Contacts.SelectedItem as User;
+            User user = UsersList.SelectedItem as User;
+            if(user == null)
+            {
+                return;
+            }
 
             // TODO: Link to users page
         }
