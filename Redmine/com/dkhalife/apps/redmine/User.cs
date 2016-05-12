@@ -1,5 +1,6 @@
 ﻿using com.dkhalife.apps.redmine.core;
 using System;
+using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
 namespace com.dkhalife.apps.redmine
@@ -18,6 +19,7 @@ namespace com.dkhalife.apps.redmine
         public string LastName { get; set; }
 
         [XmlIgnore]
+        [IgnoreDataMember]
         public override string Name
         {
             get

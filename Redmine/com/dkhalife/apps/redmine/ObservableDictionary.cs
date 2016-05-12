@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Xml.Serialization;
 using Windows.Foundation.Collections;
 
 namespace com.dkhalife.apps.redmine
@@ -13,6 +14,7 @@ namespace com.dkhalife.apps.redmine
             }
         }
 
+        [XmlIgnore]
         public bool IsChanged { get; private set; }
     }
 }

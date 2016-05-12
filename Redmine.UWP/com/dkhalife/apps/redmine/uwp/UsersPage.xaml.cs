@@ -1,5 +1,8 @@
 ﻿using com.dkhalife.apps.redmine.UWP.core;
 using System.Collections.Generic;
+using Windows.ApplicationModel.Contacts;
+using Windows.Foundation;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 
@@ -22,7 +25,36 @@ namespace com.dkhalife.apps.redmine.UWP
 
         private void OpenContactCard(object sender, TappedRoutedEventArgs e)
         {
+            User user = Contacts.SelectedItem as User;
+            if(user == null)
+            {
+                // TODO: Log 
+                return;
+            }
 
+            Contact card = new Contact()
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName
+            };
+            card.Emails.Add(new ContactEmail()
+            {
+                Address = user.Email
+            });
+
+            e.Handled = true;
+
+            ContactManager.ShowFullContactCard(card, new FullContactCardOptions()
+            {
+                DesiredRemainingView = 0
+            });
+        }
+
+        private void OpenIssuesForUser(object sender, SelectionChangedEventArgs e)
+        {
+            User user = Contacts.SelectedItem as User;
+
+            // TODO: Link to users page
         }
     }
 }

@@ -20,9 +20,9 @@ namespace com.dkhalife.apps.redmine.UWP
     {
         public App()
         {
-            Microsoft.ApplicationInsights.WindowsAppInitializer.InitializeAsync(
+            /*Microsoft.ApplicationInsights.WindowsAppInitializer.InitializeAsync(
                 Microsoft.ApplicationInsights.WindowsCollectors.Metadata |
-                Microsoft.ApplicationInsights.WindowsCollectors.Session);
+                Microsoft.ApplicationInsights.WindowsCollectors.Session);*/
 
             this.InitializeComponent();
             this.Suspending += OnSuspending;
@@ -221,8 +221,9 @@ namespace com.dkhalife.apps.redmine.UWP
                                     pi.SetValue(Client, json.ReadObject(inStream));
                                 }
                             }
-                            catch 
+                            catch(Exception e)
                             {
+                                // TODO: Add logging
                                 // Corrupted file, remove it
                                 await file.DeleteAsync();
                             }
