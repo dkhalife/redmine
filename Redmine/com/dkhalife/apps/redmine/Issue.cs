@@ -6,7 +6,7 @@ namespace com.dkhalife.apps.redmine
 {
     [XmlRoot("issue")]
     [RedmineApi("issues")]
-    public class Issue : INamedType
+    public class Issue : NamedType
     {
         [XmlElement("id")]
         public int Id { get; set; }
@@ -33,10 +33,14 @@ namespace com.dkhalife.apps.redmine
         public string Subject { get; set; }
 
         [XmlIgnore]
-        public string Name {
+        public override string Name {
             get
             {
                 return Subject;
+            }
+            set
+            {
+                Subject = value;
             }
         }
 

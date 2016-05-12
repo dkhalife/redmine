@@ -45,23 +45,23 @@ namespace com.dkhalife.apps.redmine
 
         #region Redmine Properties
         [DataMember]
-        ObservableDictionary<TimeEntryActivity> TimeEntryActivities { get; set; } = new ObservableDictionary<TimeEntryActivity> ();
+        public ObservableDictionary<TimeEntryActivity> TimeEntryActivities { get; internal set; } = new ObservableDictionary<TimeEntryActivity> ();
         [DataMember]
-        ObservableDictionary<IssuePriority> IssuePriorities { get; set; } = new ObservableDictionary<IssuePriority>();
+        public ObservableDictionary<IssuePriority> IssuePriorities { get; internal set; } = new ObservableDictionary<IssuePriority>();
         [DataMember]
-        ObservableDictionary<IssueStatus> IssueStatuses { get; set; } = new ObservableDictionary<IssueStatus> ();
+        public ObservableDictionary<IssueStatus> IssueStatuses { get; internal set; } = new ObservableDictionary<IssueStatus> ();
         [DataMember]
-        ObservableDictionary<Tracker> Trackers { get; set; } = new ObservableDictionary<Tracker> ();
+        public ObservableDictionary<Tracker> Trackers { get; internal set; } = new ObservableDictionary<Tracker> ();
         [DataMember]
-        ObservableDictionary<Project> Projects { get; set; } = new ObservableDictionary<Project> ();
+        public ObservableDictionary<Project> Projects { get; internal set; } = new ObservableDictionary<Project> ();
         [DataMember]
-        ObservableDictionary<Issue> Issues { get; set; } = new ObservableDictionary<Issue> ();
+        public ObservableDictionary<Issue> Issues { get; internal set; } = new ObservableDictionary<Issue> ();
         [DataMember]
-        ObservableDictionary<Query> Queries { get; set; } = new ObservableDictionary<Query> ();
+        public ObservableDictionary<Query> Queries { get; internal set; } = new ObservableDictionary<Query> ();
         [DataMember]
-        ObservableDictionary<TimeEntry> TimeEntries { get; set; } = new ObservableDictionary<TimeEntry> ();
+        public ObservableDictionary<TimeEntry> TimeEntries { get; internal set; } = new ObservableDictionary<TimeEntry> ();
         [DataMember]
-        ObservableDictionary<User> Users { get; set; } = new ObservableDictionary<User> ();
+        public ObservableDictionary<User> Users { get; internal set; } = new ObservableDictionary<User> ();
         #endregion
 
         #region API Core

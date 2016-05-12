@@ -48,7 +48,7 @@
     <Compile Include="com\dkhalife\apps\redmine\core\RedmineApi.cs" />
     <Compile Include="com\dkhalife\apps\redmine\ObservableDictionary.cs" />
     <Compile Include="com\dkhalife\apps\redmine\RedmineSettings.cs" />
-    <Compile Include="com\dkhalife\apps\redmine\core\INamedType.cs" />
+    <Compile Include="com\dkhalife\apps\redmine\core\NamedType.cs" />
     <Compile Include="com\dkhalife\apps\redmine\TimeEntryActivity.cs" />
     <Compile Include="com\dkhalife\apps\redmine\Issue.cs" />
     <Compile Include="com\dkhalife\apps\redmine\IssuePriority.cs" />
@@ -64,6 +64,9 @@
     <Compile Include="com\dkhalife\apps\redmine\User.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Windows.Foundation.FoundationContract">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Windows Kits\10\References\Windows.Foundation.FoundationContract\1.0.0.0\Windows.Foundation.FoundationContract.winmd</HintPath>
+    </Reference>
     <Reference Include="Windows.Foundation.UniversalApiContract">
       <HintPath>..\..\..\..\..\Program Files (x86)\Windows Kits\10\References\Windows.Foundation.UniversalApiContract\2.0.0.0\Windows.Foundation.UniversalApiContract.winmd</HintPath>
     </Reference>

@@ -1,12 +1,16 @@
 ﻿using System.Collections.Generic;
+using Windows.Foundation.Collections;
 
 namespace com.dkhalife.apps.redmine
 {
-    class ObservableDictionary<T> : Dictionary<int, T>
+    public class ObservableDictionary<T> : Dictionary<int, T>
     {
         private List<string> Index {
-            // TODO: Index by name
-            get;
+            // TODO: optimize
+            get
+            {
+                return null;
+            }
         }
 
         public bool IsChanged { get; private set; }

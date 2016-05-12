@@ -6,13 +6,13 @@ namespace com.dkhalife.apps.redmine
 {
     [XmlRoot("project")]
     [RedmineApi("projects")]
-    public class Project : INamedType
+    public class Project : NamedType
     {
         [XmlElement("id")]
         public int Id { get; set; }
 
         [XmlElement("name")]
-        public string Name { get; set; }
+        public override string Name { get; set; }
 
         [XmlElement("identifier")]
         public string Identifier { get; set; }

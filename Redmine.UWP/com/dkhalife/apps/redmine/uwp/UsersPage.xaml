@@ -24,7 +24,7 @@
                             <ColumnDefinition Width="30"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         
-                        <TextBlock Text="{x:Bind Path=FullName, Mode=OneWay}"/>
+                        <TextBlock Text="{x:Bind Path=Name, Mode=OneWay}"/>
                         <SymbolIcon Grid.Column="1" Symbol="ContactInfo" HorizontalAlignment="Right" Tapped="OpenContactCard" />
                     </Grid>
                 </DataTemplate>

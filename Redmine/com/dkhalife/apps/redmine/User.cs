@@ -6,7 +6,7 @@ namespace com.dkhalife.apps.redmine
 {
     [XmlRoot("user")]
     [RedmineApi("users")]
-    public class User : INamedType
+    public class User : NamedType
     {
         [XmlElement("id")]
         public int Id { get; set; }
@@ -18,11 +18,15 @@ namespace com.dkhalife.apps.redmine
         public string LastName { get; set; }
 
         [XmlIgnore]
-        string INamedType.Name
+        public override string Name
         {
             get
             {
                 return FirstName + " " + LastName;
+            }
+            set
+            {
+                throw new NotSupportedException();
             }
         }
 

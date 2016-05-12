@@ -2,13 +2,13 @@
 
 namespace com.dkhalife.apps.redmine
 {
-    public class Query : INamedType
+    public class Query : NamedType
     {
         [XmlElement("id")]
         public int Id { get; set; }
 
         [XmlElement("name")]
-        public string Name { get; set; }
+        public override string Name { get; set; }
 
         [XmlElement("is_public")]
         public bool IsPublic { get; set; }
