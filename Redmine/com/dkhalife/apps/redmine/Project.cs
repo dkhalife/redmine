@@ -6,7 +6,7 @@ namespace com.dkhalife.apps.redmine
 {
     [XmlRoot("project")]
     [RedmineApi("projects")]
-    public class Project
+    public class Project : INamedType
     {
         [XmlElement("id")]
         public int Id { get; set; }

@@ -6,7 +6,7 @@ namespace com.dkhalife.apps.redmine
 {
     [XmlRoot("user")]
     [RedmineApi("users")]
-    public class User
+    public class User : INamedType
     {
         [XmlElement("id")]
         public int Id { get; set; }
@@ -18,7 +18,8 @@ namespace com.dkhalife.apps.redmine
         public string LastName { get; set; }
 
         [XmlIgnore]
-        public string FullName {
+        string INamedType.Name
+        {
             get
             {
                 return FirstName + " " + LastName;

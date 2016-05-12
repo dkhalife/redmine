@@ -2,7 +2,7 @@
 
 namespace com.dkhalife.apps.redmine
 {
-    public class Query
+    public class Query : INamedType
     {
         [XmlElement("id")]
         public int Id { get; set; }

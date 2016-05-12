@@ -45,23 +45,23 @@ namespace com.dkhalife.apps.redmine
 
         #region Redmine Properties
         [DataMember]
-        public Dictionary<int, TimeEntryActivity> TimeEntryActivities { get; internal set; } = new Dictionary<int, TimeEntryActivity>();
+        ObservableDictionary<TimeEntryActivity> TimeEntryActivities { get; set; } = new ObservableDictionary<TimeEntryActivity> ();
         [DataMember]
-        public Dictionary<int, IssuePriority> IssuePriorities { get; internal set; } = new Dictionary<int, IssuePriority>();
+        ObservableDictionary<IssuePriority> IssuePriorities { get; set; } = new ObservableDictionary<IssuePriority>();
         [DataMember]
-        public Dictionary<int, IssueStatus> IssueStatuses { get; internal set; } = new Dictionary<int, IssueStatus>();
+        ObservableDictionary<IssueStatus> IssueStatuses { get; set; } = new ObservableDictionary<IssueStatus> ();
         [DataMember]
-        public Dictionary<int, Tracker> Trackers { get; internal set; } = new Dictionary<int, Tracker>();
+        ObservableDictionary<Tracker> Trackers { get; set; } = new ObservableDictionary<Tracker> ();
         [DataMember]
-        public Dictionary<int, Project> Projects { get; internal set; } = new Dictionary<int, Project>();
+        ObservableDictionary<Project> Projects { get; set; } = new ObservableDictionary<Project> ();
         [DataMember]
-        public Dictionary<int, Issue> Issues { get; internal set; } = new Dictionary<int, Issue>();
+        ObservableDictionary<Issue> Issues { get; set; } = new ObservableDictionary<Issue> ();
         [DataMember]
-        public Dictionary<int, Query> Queries { get; internal set; } = new Dictionary<int, Query>();
+        ObservableDictionary<Query> Queries { get; set; } = new ObservableDictionary<Query> ();
         [DataMember]
-        public Dictionary<int, TimeEntry> TimeEntries { get; internal set; } = new Dictionary<int, TimeEntry>();
+        ObservableDictionary<TimeEntry> TimeEntries { get; set; } = new ObservableDictionary<TimeEntry> ();
         [DataMember]
-        public Dictionary<int, User> Users { get; internal set; } = new Dictionary<int, User>();
+        ObservableDictionary<User> Users { get; set; } = new ObservableDictionary<User> ();
         #endregion
 
         #region API Core

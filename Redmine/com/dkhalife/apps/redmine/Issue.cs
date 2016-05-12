@@ -6,7 +6,7 @@ namespace com.dkhalife.apps.redmine
 {
     [XmlRoot("issue")]
     [RedmineApi("issues")]
-    public class Issue
+    public class Issue : INamedType
     {
         [XmlElement("id")]
         public int Id { get; set; }
@@ -32,6 +32,14 @@ namespace com.dkhalife.apps.redmine
         [XmlElement("subject")]
         public string Subject { get; set; }
 
+        [XmlIgnore]
+        public string Name {
+            get
+            {
+                return Subject;
+            }
+        }
+
         [XmlElement("description")]
         public string Description { get; set; }
         
@@ -55,8 +63,9 @@ namespace com.dkhalife.apps.redmine
 
         [XmlElement("updated_on")]
         public DateTime UpdatedOn { get; set; }
+
         /*
-        [XmlElement("closed_on")]
-        public DateTime ClosedOn { get; set; }*/
+[XmlElement("closed_on")]
+public DateTime ClosedOn { get; set; }*/
     }
 }
