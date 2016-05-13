@@ -101,12 +101,14 @@
     <Compile Include="com\dkhalife\apps\redmine\uwp\FirstRunExperiencePage.xaml.cs">
       <DependentUpon>FirstRunExperiencePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="com\dkhalife\apps\redmine\uwp\GroupedList.cs" />
     <Compile Include="com\dkhalife\apps\redmine\uwp\HubPage.xaml.cs">
       <DependentUpon>HubPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="com\dkhalife\apps\redmine\uwp\IssuePage.xaml.cs">
       <DependentUpon>IssuePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="com\dkhalife\apps\redmine\uwp\IssuesFilter.cs" />
     <Compile Include="com\dkhalife\apps\redmine\uwp\IssuesPage.xaml.cs">
       <DependentUpon>IssuesPage.xaml</DependentUpon>
     </Compile>

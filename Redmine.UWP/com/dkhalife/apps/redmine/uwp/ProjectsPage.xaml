@@ -14,8 +14,8 @@
             <PivotItem Header="Open Projects" />
             <PivotItem Header="All Projects" />
         </Pivot>
-        
-        <ListView ItemsSource="{x:Bind Path=Projects.Values}" SelectionChanged="OpenProject">
+
+        <ListView ItemsSource="{x:Bind Projects.Values}" SelectionChanged="OpenIssuesForProject">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -24,7 +24,7 @@
 
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="r:Project">
-                     <TextBlock Text="{x:Bind Path=Name, Mode=OneWay}"/>
+                     <TextBlock Text="{x:Bind Name}"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

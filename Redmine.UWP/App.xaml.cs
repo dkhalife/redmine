@@ -221,9 +221,10 @@ namespace com.dkhalife.apps.redmine.UWP
                                     pi.SetValue(Client, json.ReadObject(inStream));
                                 }
                             }
-                            catch(Exception e)
+                            catch
                             {
                                 // TODO: Add logging
+
                                 // Corrupted file, remove it
                                 await file.DeleteAsync();
                             }
@@ -231,6 +232,23 @@ namespace com.dkhalife.apps.redmine.UWP
                     }
                 }
             }
+        }
+
+        public void OpenIssuesFor(Project project = null, Query query = null, User user = null)
+        {
+            if (project == null && query == null && user == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            Frame rootFrame = Window.Current.Content as Frame;
+            HubPage hub = rootFrame.Content as HubPage;
+            if(hub == null)
+            {
+                throw new InvalidOperationException();
+            }
+
+            hub.OpenIssuesFor(project, query, user);
         }
     }
 }

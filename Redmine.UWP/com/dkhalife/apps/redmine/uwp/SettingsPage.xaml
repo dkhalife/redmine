@@ -43,13 +43,13 @@
             <TextBlock Name="TestOutcome" />
 
             <!--TextBlock Margin="0,20,0,5" Text="Issues Update Frequency" />
-            <TextBox Name="UpdateFrequency" Text="{x:Bind Path=Server.UpdateFrequency}" />
+            <TextBox Name="UpdateFrequency" Text="{x:Bind Server.UpdateFrequency}" />
 
             <TextBlock Margin="0,20,0,5" Text="Projects Update Frequency" />
-            <TextBox Name="ProjectsUpdateFrequency" Text="{x:Bind Path=Server.ProjectsUpdateFrequency}" />
+            <TextBox Name="ProjectsUpdateFrequency" Text="{x:Bind Server.ProjectsUpdateFrequency}" />
 
             <TextBlock Margin="0,20,0,5" Text="Meta Update Frequency" />
-            <TextBox Name="EnumerationsUpdateFrequency" Text="{x:Bind Path=Server.EnumerationsUpdateFrequency}" />
+            <TextBox Name="EnumerationsUpdateFrequency" Text="{x:Bind Server.EnumerationsUpdateFrequency}" />
 
             <TextBlock Margin="0,20,0,5" Text="Theme" />
             <ComboBox Name="Theme">

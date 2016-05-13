@@ -9,7 +9,7 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <ListView ItemsSource="{x:Bind Path=Users.Values}" Name="UsersList" SelectionChanged="OpenIssuesForUser">
+        <ListView ItemsSource="{x:Bind Users.Values}" SelectionChanged="OpenIssuesForUser">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -24,7 +24,7 @@
                             <ColumnDefinition Width="30"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         
-                        <TextBlock Text="{x:Bind Path=Name, Mode=OneWay}"/>
+                        <TextBlock Text="{x:Bind Name}"/>
                         <SymbolIcon Grid.Column="1" Symbol="ContactInfo" HorizontalAlignment="Right" Tapped="OpenContactCard" />
                     </Grid>
                 </DataTemplate>

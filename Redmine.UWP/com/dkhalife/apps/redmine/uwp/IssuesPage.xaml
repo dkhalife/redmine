@@ -2,56 +2,75 @@
     x:Class="com.dkhalife.apps.redmine.UWP.IssuesPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:com.dkhalife.apps.redmine.UWP"
+    xmlns:local="using:com.dkhalife.apps.redmine.uwp"
     xmlns:r="using:com.dkhalife.apps.redmine"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <CollectionViewSource x:Name="IssuesList" x:Key="IssuesList" IsSourceGrouped="True" />
+
+        <DataTemplate x:Name="IssuesListTemplate" x:DataType="r:Issue">
+            <Grid Margin="0,10,0,10">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontFamily="Segoe MDL2 Assets" Margin="0,3,10,0" Text="&#xEDB0;" Foreground="{x:Bind Priority.Color}"></TextBlock>
+                    <TextBlock Text="{x:Bind Id}" Margin="0,0,10,0"/>
+                    <TextBlock Text="{x:Bind Subject}"/>
+                </StackPanel>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0" Orientation="Horizontal">
+                        <TextBlock Text="{x:Bind Tracker.Name}"/>
+                        <TextBlock Grid.Column="0" Margin="10,0,0,0" Text="{x:Bind Status.Name}"/>
+                    </StackPanel>
+
+                    <ProgressBar Grid.Column="1" Margin="20,0,20,0" Value="{x:Bind DoneRatio}" MaxWidth="80" />
+
+                    <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <TextBlock FontFamily="Segoe MDL2 Assets" Margin="0,3,10,0" Text="&#xE2AF;"></TextBlock>
+                        <TextBlock Text="{x:Bind AssignedTo.Name}"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <ListView ItemsSource="{x:Bind Path=Issues.Values}" SelectionChanged="OpenIssue" HorizontalContentAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Text="{x:Bind FilterDescription}" Margin="10" />
+
+        <ListView Grid.Row="1" ItemsSource="{Binding Source={StaticResource IssuesList}}" ItemTemplate="{StaticResource IssuesListTemplate}" SelectionChanged="OpenIssue" HorizontalContentAlignment="Stretch">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                 </Style>
             </ListView.ItemContainerStyle>
-            
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="r:Issue">
-                    <Grid Margin="0,10,0,10">
-                        <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock FontFamily="Segoe MDL2 Assets" Margin="0,3,10,0" Text="&#xEDB0;" Foreground="{x:Bind Priority.Color}"></TextBlock>
-                            <TextBlock Text="{x:Bind Path=Id}" Margin="0,0,10,0"/>
-                            <TextBlock Text="{x:Bind Path=Subject, Mode=OneWay}"/>
-                        </StackPanel>
 
-                        <Grid Grid.Row="1">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-
-                            <StackPanel Grid.Column="0" Orientation="Horizontal">
-                                <TextBlock Text="{x:Bind Path=Tracker.Name, Mode=OneWay}"/>
-                                <TextBlock Grid.Column="0" Margin="10,0,0,0" Text="{x:Bind Path=Status.Name, Mode=OneWay}"/>
-                            </StackPanel>
-                            
-                            <ProgressBar Grid.Column="1" Margin="20,0,20,0" Value="{x:Bind DoneRatio}" MaxWidth="80" />
-                            
-                            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
-                                <TextBlock FontFamily="Segoe MDL2 Assets" Margin="0,3,10,0" Text="&#xE2AF;"></TextBlock>
-                                <TextBlock Text="{x:Bind Path=AssignedTo.Name, Mode=OneWay}"/>
-                            </StackPanel>
-                        </Grid>
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>
+            <ListView.GroupStyle>
+                <GroupStyle >
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate x:DataType="local:GroupedList">
+                            <TextBlock Text="{x:Bind Key}" 
+                                       Style="{ThemeResource TitleTextBlockStyle}"/>
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                </GroupStyle>
+            </ListView.GroupStyle>
         </ListView>
     </Grid>
 </Page>

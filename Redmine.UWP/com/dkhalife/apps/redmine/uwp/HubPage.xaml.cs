@@ -35,7 +35,7 @@ namespace com.dkhalife.apps.redmine.UWP
             }
         }
 
-        private void NavigateSubPage(Type page)
+        private void NavigateSubPage(Type page, object parameter = null)
         {
             PageTitle.Text = page.GetTypeInfo().GetCustomAttribute<PageAttribute>().Title;
 
@@ -50,7 +50,7 @@ namespace com.dkhalife.apps.redmine.UWP
                 Navigation.AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
             }
             
-            SubPage.Navigate(page);
+            SubPage.Navigate(page, parameter);
             Menu.IsPaneOpen = false;
         }
 
@@ -107,6 +107,15 @@ namespace com.dkhalife.apps.redmine.UWP
         {
             // TOOD: Do logout logic
             Frame.Navigate(typeof(LoginPage));
+        }
+
+        public void OpenIssuesFor(Project project = null, Query query = null, User user = null)
+        {
+            NavigateSubPage(typeof(IssuesPage), new IssuesFilter() {
+                Project = project,
+                Query = query,
+                User = user
+            });
         }
     }
 }

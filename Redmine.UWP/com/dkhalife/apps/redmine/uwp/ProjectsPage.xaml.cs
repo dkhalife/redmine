@@ -1,5 +1,6 @@
 ﻿using com.dkhalife.apps.redmine.UWP.core;
 using System.Collections.Generic;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -19,15 +20,12 @@ namespace com.dkhalife.apps.redmine.UWP
             this.InitializeComponent();
         }
         
-        private void OpenProject(object sender, SelectionChangedEventArgs e)
+        private void OpenIssuesForProject(object sender, SelectionChangedEventArgs e)
         {
             ListView list = sender as ListView;
-            Project p = list.SelectedItem as Project;
-
-            if (p != null)
-            {
-                Frame.Navigate(typeof(ProjectPage), p.Id);
-            }
+            Project project = list.SelectedItem as Project;
+            App app = Application.Current as App;
+            app.OpenIssuesFor(project: project);
         }
     }
 }

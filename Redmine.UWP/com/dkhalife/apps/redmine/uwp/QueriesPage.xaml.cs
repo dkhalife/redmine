@@ -1,5 +1,6 @@
 ﻿using com.dkhalife.apps.redmine.UWP.core;
 using System.Collections.Generic;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -21,12 +22,10 @@ namespace com.dkhalife.apps.redmine.UWP
 
         private void OpenIssuesForQuery(object sender, SelectionChangedEventArgs e)
         {
-            Query query = (QueriesList.SelectedItem) as Query;
-            if (query == null) {
-                return;
-            }
-
-            // TODO: Link to issues page
+            ListView list = sender as ListView;
+            Query query = list.SelectedItem as Query;
+            App app = Application.Current as App;
+            app.OpenIssuesFor(query: query);
         }
     }
 }
