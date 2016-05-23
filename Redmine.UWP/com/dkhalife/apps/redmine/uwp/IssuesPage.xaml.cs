@@ -1,13 +1,13 @@
-﻿using com.dkhalife.apps.redmine.uwp;
-using com.dkhalife.apps.redmine.UWP.core;
+﻿using LLM;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace com.dkhalife.apps.redmine.UWP
+namespace com.dkhalife.apps.redmine.uwp
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -23,7 +23,7 @@ namespace com.dkhalife.apps.redmine.UWP
             this.InitializeComponent();
         }
 
-        private void OpenIssue(object sender, SelectionChangedEventArgs e)
+        private void OpenIssue(object sender, RoutedEventArgs e)
         {
             ListView list = sender as ListView;
             Issue i = list.SelectedItem as Issue;
@@ -66,11 +66,12 @@ namespace com.dkhalife.apps.redmine.UWP
 
                 foreach (var g in query)
                 {
-                    GroupedList group = new GroupedList() {
+                    GroupedList group = new GroupedList()
+                    {
                         Key = g.GroupName
                     };
 
-                    foreach (var issue in g.Items)
+                    foreach (Issue issue in g.Items)
                     {
                         group.Add(issue);
                     }
@@ -78,6 +79,19 @@ namespace com.dkhalife.apps.redmine.UWP
                 }
 
                 IssuesList.Source = groups;
+            }
+        }
+
+        private void ItemSwipeTriggerComplete(object sender, SwipeCompleteEventArgs args)
+        {
+            Issue issue = (sender as LLMListViewItem).Content as Issue;
+            if (args.SwipeDirection == SwipeDirection.Left)
+            {
+                // TODO: Mark completed
+            }
+            else
+            {
+                // TODO: Contact user
             }
         }
     }

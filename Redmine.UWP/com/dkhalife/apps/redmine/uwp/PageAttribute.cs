@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace com.dkhalife.apps.redmine.UWP.core
+namespace com.dkhalife.apps.redmine.uwp
 {
     internal class PageAttribute : Attribute
     {

@@ -8,13 +8,14 @@ using System.Runtime.Serialization.Json;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.Networking.Connectivity;
 using Windows.Security.Credentials;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
-namespace com.dkhalife.apps.redmine.UWP
+namespace com.dkhalife.apps.redmine.uwp
 {
     sealed partial class App : Application
     {

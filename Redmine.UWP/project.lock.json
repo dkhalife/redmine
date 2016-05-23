@@ -3,6 +3,17 @@
   "version": 1,
   "targets": {
     "UAP,Version=v10.0": {
+      "LLMListView/0.0.18": {
+        "dependencies": {
+          "XPButton": "0.0.4"
+        },
+        "compile": {
+          "lib/uap10.0/LLMListView.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/LLMListView.dll": {}
+        }
+      },
       "Microsoft.ApplicationInsights/1.0.0": {
         "compile": {
           "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
@@ -1818,9 +1829,28 @@
             "rid": "win8-aot"
           }
         }
+      },
+      "XPButton/0.0.4": {
+        "compile": {
+          "lib/uap10.0/XPButton.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/XPButton.dll": {}
+        }
       }
     },
     "UAP,Version=v10.0/win10-arm": {
+      "LLMListView/0.0.18": {
+        "dependencies": {
+          "XPButton": "0.0.4"
+        },
+        "compile": {
+          "lib/uap10.0/LLMListView.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/LLMListView.dll": {}
+        }
+      },
       "Microsoft.ApplicationInsights/1.0.0": {
         "compile": {
           "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
@@ -3489,9 +3519,28 @@
         "runtime": {
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "XPButton/0.0.4": {
+        "compile": {
+          "lib/uap10.0/XPButton.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/XPButton.dll": {}
+        }
       }
     },
     "UAP,Version=v10.0/win10-arm-aot": {
+      "LLMListView/0.0.18": {
+        "dependencies": {
+          "XPButton": "0.0.4"
+        },
+        "compile": {
+          "lib/uap10.0/LLMListView.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/LLMListView.dll": {}
+        }
+      },
       "Microsoft.ApplicationInsights/1.0.0": {
         "compile": {
           "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
@@ -5124,9 +5173,28 @@
         "runtime": {
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "XPButton/0.0.4": {
+        "compile": {
+          "lib/uap10.0/XPButton.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/XPButton.dll": {}
+        }
       }
     },
     "UAP,Version=v10.0/win10-x64": {
+      "LLMListView/0.0.18": {
+        "dependencies": {
+          "XPButton": "0.0.4"
+        },
+        "compile": {
+          "lib/uap10.0/LLMListView.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/LLMListView.dll": {}
+        }
+      },
       "Microsoft.ApplicationInsights/1.0.0": {
         "compile": {
           "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
@@ -6801,9 +6869,28 @@
         "runtime": {
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "XPButton/0.0.4": {
+        "compile": {
+          "lib/uap10.0/XPButton.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/XPButton.dll": {}
+        }
       }
     },
     "UAP,Version=v10.0/win10-x64-aot": {
+      "LLMListView/0.0.18": {
+        "dependencies": {
+          "XPButton": "0.0.4"
+        },
+        "compile": {
+          "lib/uap10.0/LLMListView.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/LLMListView.dll": {}
+        }
+      },
       "Microsoft.ApplicationInsights/1.0.0": {
         "compile": {
           "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
@@ -8436,9 +8523,28 @@
         "runtime": {
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "XPButton/0.0.4": {
+        "compile": {
+          "lib/uap10.0/XPButton.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/XPButton.dll": {}
+        }
       }
     },
     "UAP,Version=v10.0/win10-x86": {
+      "LLMListView/0.0.18": {
+        "dependencies": {
+          "XPButton": "0.0.4"
+        },
+        "compile": {
+          "lib/uap10.0/LLMListView.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/LLMListView.dll": {}
+        }
+      },
       "Microsoft.ApplicationInsights/1.0.0": {
         "compile": {
           "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
@@ -10113,9 +10219,28 @@
         "runtime": {
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "XPButton/0.0.4": {
+        "compile": {
+          "lib/uap10.0/XPButton.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/XPButton.dll": {}
+        }
       }
     },
     "UAP,Version=v10.0/win10-x86-aot": {
+      "LLMListView/0.0.18": {
+        "dependencies": {
+          "XPButton": "0.0.4"
+        },
+        "compile": {
+          "lib/uap10.0/LLMListView.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/LLMListView.dll": {}
+        }
+      },
       "Microsoft.ApplicationInsights/1.0.0": {
         "compile": {
           "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
@@ -11748,10 +11873,32 @@
         "runtime": {
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "XPButton/0.0.4": {
+        "compile": {
+          "lib/uap10.0/XPButton.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/XPButton.dll": {}
+        }
       }
     }
   },
   "libraries": {
+    "LLMListView/0.0.18": {
+      "sha512": "k53P03aP+BFDD4ERUfkTtowJbK2G6fKljq1vXNc5FN9WR6Hs4GbA/H1DSW6ysykhBZ5IlghOevGK4wXcXGt6Hw==",
+      "type": "package",
+      "files": [
+        "LLMListView.0.0.18.nupkg.sha512",
+        "LLMListView.nuspec",
+        "lib/uap10.0/LLMListView.dll",
+        "lib/uap10.0/LLMListView.pdb",
+        "lib/uap10.0/LLMListView.pri",
+        "lib/uap10.0/LLMListView/Generic.xbf",
+        "lib/uap10.0/LLMListView/LLMListView.xr.xml",
+        "lib/uap10.0/LLMListView/Properties/LLMListView.rd.xml"
+      ]
+    },
     "Microsoft.ApplicationInsights/1.0.0": {
       "sha512": "HZ47/thX57SOuIivSvIbsR6L9CCb/Yt3IyB2i4KHmmNlf3DO+lqFwWIKDdbDNWKX+qh0Rg20/JSMPK0dwUsYYw==",
       "type": "package",
@@ -14931,10 +15078,25 @@
         "runtime.json",
         "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll"
       ]
+    },
+    "XPButton/0.0.4": {
+      "sha512": "DxG8AGzFXJYUNCot9rTB019RfCpIb+jTxEszVClonKwk5ga+FtvELUVA+hj4J3YKuQcxrYuqg/u4kaaX8OrYiQ==",
+      "type": "package",
+      "files": [
+        "XPButton.0.0.4.nupkg.sha512",
+        "XPButton.nuspec",
+        "lib/uap10.0/XPButton.dll",
+        "lib/uap10.0/XPButton.pdb",
+        "lib/uap10.0/XPButton.pri",
+        "lib/uap10.0/XPButton/Generic.xbf",
+        "lib/uap10.0/XPButton/Properties/XPButton.rd.xml",
+        "lib/uap10.0/XPButton/XPButton.xr.xml"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "": [
+      "LLMListView >= 0.0.18",
       "Microsoft.ApplicationInsights >= 1.0.0",
       "Microsoft.ApplicationInsights.PersistenceChannel >= 1.0.0",
       "Microsoft.ApplicationInsights.WindowsApps >= 1.0.0",

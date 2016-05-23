@@ -1,32 +1,84 @@
 ﻿<Page
-    x:Class="com.dkhalife.apps.redmine.UWP.ProjectsPage"
+    x:Class="com.dkhalife.apps.redmine.uwp.ProjectsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:com.dkhalife.apps.redmine.uwp"
     xmlns:r="using:com.dkhalife.apps.redmine"
-    xmlns:local="using:com.dkhalife.apps.redmine.UWP"
+    xmlns:llm="using:LLM"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Pivot>
+    <Page.Resources>
+        <CollectionViewSource x:Name="ProjectsList" IsSourceGrouped="True" />
+
+        <DataTemplate x:Name="ProjectsListTemplate" x:DataType="r:Project">
+            <TextBlock Text="{x:Bind Name}"/>
+        </DataTemplate>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Pivot Margin="-10,0,-12,0">
             <PivotItem Header="My Projects" />
             <PivotItem Header="Open Projects" />
-            <PivotItem Header="All Projects" />
+            <PivotItem Header="All Projects" >
+                <llm:LLMListView ItemsSource="{x:Bind ProjectsList.View}" 
+                                 ItemTemplate="{StaticResource ProjectsListTemplate}"
+                                 ShowsScrollingPlaceholders="True" Tapped="OpenIssuesForProject"
+                                 ItemSwipeTriggerComplete="ItemSwipeTriggerComplete"
+                                 ItemLeftSwipeMode="Expand"  
+                                 ItemLeftSwipeMaxLength="90"
+                                 ItemLeftActionRateForSwipeLength="0.4" 
+                                 ItemRightSwipeMode="Collapse" 
+                                 ItemRightSwipeMaxLength="120"
+                                 ItemRightActionRateForSwipeLength="0.4">
+
+                    <ListView.GroupStyle>
+                        <GroupStyle>
+                            <GroupStyle.HeaderTemplate>
+                                <DataTemplate x:DataType="local:GroupedList">
+                                    <TextBlock Text="{x:Bind Key}" 
+                                       Style="{ThemeResource TitleTextBlockStyle}"/>
+                                </DataTemplate>
+                            </GroupStyle.HeaderTemplate>
+                        </GroupStyle>
+                    </ListView.GroupStyle>
+
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+
+                    <llm:LLMListView.ItemLeftSwipeContentTemplate>
+                        <DataTemplate>
+                            <Grid Background="LightGray">
+                                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                                    <StackPanel.RenderTransform>
+                                        <TranslateTransform/>
+                                    </StackPanel.RenderTransform>
+                                    <SymbolIcon  Margin="10,0,0,0" Symbol="PreviewLink" />
+                                    <TextBlock Margin="10,0,0,0" Text="Details" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </llm:LLMListView.ItemLeftSwipeContentTemplate>
+
+                    <llm:LLMListView.ItemRightSwipeContentTemplate>
+                        <DataTemplate>
+                            <Grid Background="LightBlue">
+                                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                                    <StackPanel.RenderTransform>
+                                        <TranslateTransform/>
+                                    </StackPanel.RenderTransform>
+                                    <TextBlock Margin="0,0,20,0" Text="Roadmap" VerticalAlignment="Center" />
+                                    <SymbolIcon  Margin="0,0,10,0" Symbol="Bullets" />
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </llm:LLMListView.ItemRightSwipeContentTemplate>
+                </llm:LLMListView>
+            </PivotItem>
         </Pivot>
-
-        <ListView ItemsSource="{x:Bind Projects.Values}" SelectionChanged="OpenIssuesForProject">
-            <ListView.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                </Style>
-            </ListView.ItemContainerStyle>
-
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="r:Project">
-                     <TextBlock Text="{x:Bind Name}"/>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </StackPanel>
+    </Grid>
 </Page>

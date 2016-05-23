@@ -1,6 +1,6 @@
-﻿using com.dkhalife.apps.redmine.UWP.core;
-using System;
+﻿using System;
 using System.Reflection;
+using Windows.Networking.Connectivity;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -8,7 +8,7 @@ using Windows.UI.Xaml.Input;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace com.dkhalife.apps.redmine.UWP
+namespace com.dkhalife.apps.redmine.uwp
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -22,6 +22,37 @@ namespace com.dkhalife.apps.redmine.UWP
             Navigation = SystemNavigationManager.GetForCurrentView();
             Navigation.BackRequested += Navigation_BackRequested;
             NavigateSubPage(typeof(MyPage));
+
+            NetworkInformation.NetworkStatusChanged += NetworkStatusChange;
+        }
+
+        private async void NetworkStatusChange(object sender)
+        {
+            ConnectionProfile profile = NetworkInformation.GetInternetConnectionProfile();
+            if(profile != null)
+            {
+                NetworkConnectivityLevel connection = profile.GetNetworkConnectivityLevel();
+                if (connection == NetworkConnectivityLevel.InternetAccess)
+                {
+                    await this.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                    {
+                        // There is an active connection
+                        QueriesButton.IsEnabled = true;
+                    });
+
+                    return;
+                }
+            }
+
+            await this.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            {
+                QueriesButton.IsEnabled = false;
+                if (SubPage.Content.GetType() == typeof(QueriesPage))
+                {
+                    // TODO: Inapp toast feedback
+                    NavigateSubPage(typeof(MyPage));
+                }
+            });
         }
 
         private void Navigation_BackRequested(object sender, BackRequestedEventArgs e)

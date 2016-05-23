@@ -1,4 +1,4 @@
-﻿namespace com.dkhalife.apps.redmine.UWP
+﻿namespace com.dkhalife.apps.redmine.uwp
 {
     internal class IssuesFilter
     {
