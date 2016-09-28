@@ -71,5 +71,11 @@ namespace com.dkhalife.apps.redmine
         /*
 [XmlElement("closed_on")]
 public DateTime ClosedOn { get; set; }*/
+
+
+        public bool IsAssigned { get; set; }
+
+        public bool IsCompleted { get; set; }
+
     }
 }
